@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1= title
+    p Welcome to #{title}
+
+    table
+        each client in clients
+            tr
+                td= client.id
+                td= client.name
+                td= client.age
