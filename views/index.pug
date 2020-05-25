@@ -4,7 +4,7 @@ block content
     h1= title
     p Welcome to #{title}
 
-    table
+    table.table.is-hoverable.is-fullwidth
         each client in clients
             tr
                 td= client.id

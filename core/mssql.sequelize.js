@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const DB_CONFIG = {
     userName: 'DBAdmin',
-    password: '891239321',
+    password: '123',
     sampleDbName: 'TEST_BD',
     hostName: 'localhost'
 };

@@ -1,0 +1,17 @@
+module.exports = {
+    department: 'department',
+    culturalInstitution: 'culturalInstitution',
+    tourObject: 'tourObject',
+    document: 'document',
+    excursion: 'excursion',
+    excursionRequest: 'excursionRequest',
+    feedback: 'feedback',
+    feedbackStatus: 'feedbackStatus',
+    news: 'news',
+    requestStatus: 'requestStatus',
+    role: 'role',
+    service: 'service',
+    serviceRequest: 'serviceRequest',
+    staffer: 'staffer',
+    activity: 'activity',
+}
