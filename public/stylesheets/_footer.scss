@@ -1,0 +1,72 @@
+.footer {
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 60px;
+    }
+
+    .title {
+
+      padding-bottom: 15px;
+
+      span {
+        position: relative;
+        padding-bottom: 15px;
+        text-transform: uppercase;
+
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 1px;
+          background: #848484;
+          width: 85%;
+        }
+      }
+    }
+
+    ul {
+      li {
+        span:first-child {
+          margin-right: 10px;
+        }
+
+        .icon {
+          color: #848484;
+          margin-right: 10px;
+
+          & + a {
+            vertical-align: super;
+          }
+        }
+
+        a {
+          color: $white;
+          transition: color .25s;
+
+          &:hover {
+            color: $primary;
+          }
+        }
+      }
+    }
+  }
+
+  &__menu {
+    columns: 150px 3;
+    max-width: 588px;
+
+    li {
+
+      &.is-active {
+        a {
+          color: $primary;
+        }
+      }
+
+      a {
+
+      }
+    }
+  }
+}
