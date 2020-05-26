@@ -37,6 +37,7 @@ module.exports = (sequelize, DataTypes) => {
         current.hasMany(models[names.service], departmentIdConfig);
         current.hasMany(models[names.activity], departmentIdConfig);
         current.hasMany(models[names.news], departmentIdConfig);
+        current.hasMany(models[names.excursion], departmentIdConfig);
     };
 
     return DepartmentModel;
