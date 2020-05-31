@@ -1,107 +1,107 @@
 doctype html
 html
-  head
-    title= title
-    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(href='https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap' rel='stylesheet')
-    meta(name="viewport" content="width=device-width, initial-scale=1")
-    link(rel='stylesheet' href='https://unpkg.com/swiper/css/swiper.css')
-    link(rel='stylesheet' href='https://unpkg.com/swiper/css/swiper.min.css')
-    script(src='https://unpkg.com/swiper/js/swiper.js')
-    script(src='https://unpkg.com/swiper/js/swiper.min.js')
-  body
-    header.header
-      .header__top
-        a.navbar-burger.burger(role='button' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample')
-          span(aria-hidden='true')
-          span(aria-hidden='true')
-          span(aria-hidden='true')
-        a(href="/")
-          img(src='./img/logo_2.png' width='150' height='84')
-        a(href='/')
-          img(src='./img/logo_1.png' width='400' height='100')
-        .has-text-right
-          a(href="#").header__phone
-            span.icon
-              span.material-icons call
-            span 1-255-4464645
-          .header__search
-            form
-              .field
-                .control
-                  input.input(type="text" placeholder="Поиск по сайту ")
-      .header__menu.navbar
-        .navbar-menu
-          .navbar-item.has-dropdown.is-hoverable
-            a.navbar-link О нас
-            .navbar-dropdown
-              a.navbar-item Об учреждении
-              a.navbar-item Организационная структура
-              a.navbar-item Документы
-              a.navbar-item Независимая оценка
+    head
+        title= title
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(href='https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap' rel='stylesheet')
+        link(rel='stylesheet' href='https://unpkg.com/swiper/css/swiper.min.css')
+        script(src='https://unpkg.com/swiper/js/swiper.min.js')
+    body
+        header.header
+            .header__top
+                a.navbar-burger.burger(role='button' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample')
+                    span(aria-hidden='true')
+                    span(aria-hidden='true')
+                    span(aria-hidden='true')
+                a(href="/")
+                    img(src='./img/logo_2.png' width='150' height='84')
+                a(href='/')
+                    img(src='./img/logo_1.png' width='400' height='100')
+                .has-text-right
+                    a(href="#").header__phone
+                        span.icon
+                            span.material-icons call
+                        span 1-255-4464645
+                    .header__search
+                        form
+                            .field
+                                .control
+                                    input.input(type="text" placeholder="Поиск по сайту ")
+            .header__menu.navbar
+                .navbar-menu
+                    .navbar-item.has-dropdown.is-hoverable
+                        a.navbar-link О нас
+                        .navbar-dropdown
+                            a.navbar-item Об учреждении
+                            a.navbar-item Организационная структура
+                            a.navbar-item Документы
+                            a.navbar-item Независимая оценка
 
 
 
-          .navbar-item.has-dropdown.is-hoverable
-            a.navbar-link Отделения центра
-            .navbar-dropdown
-              a.navbar-item Информация о музее и домах культуры
-          .navbar-item.has-dropdown.is-hoverable
-            a.navbar-link Услуги
-            .navbar-dropdown
-              a.navbar-item Афиша мероприятий
-              a.navbar-item Афиша экскурсий
-              a.navbar-item Платные услуги
-          .navbar-item.has-dropdown.is-hoverable
-            a.navbar-link Культурные объекты
-            .navbar-dropdown
-              a.navbar-item Инф. об объектах культуры района
+                    .navbar-item.has-dropdown.is-hoverable
+                        a.navbar-link Отделения центра
+                        .navbar-dropdown
+                            a.navbar-item Информация о музее и домах культуры
+                    .navbar-item.has-dropdown.is-hoverable
+                        a.navbar-link Услуги
+                        .navbar-dropdown
+                            a.navbar-item Афиша мероприятий
+                            a.navbar-item Афиша экскурсий
+                            a.navbar-item Платные услуги
+                    .navbar-item.has-dropdown.is-hoverable
+                        a.navbar-link Культурные объекты
+                        .navbar-dropdown
+                            a.navbar-item Инф. об объектах культуры района
 
 
-          a.navbar-item Контакты
-    main
-      block content
-    footer.footer
-      .columns
-        .column
-        .column
-          .footer__item
-            .title.is-5.has-text-white
-              span Контакты
-            ul
-              li
-                span.icon.material-icons add_location
-                a(href="#") 6036 Richmond hwy., Alexandria, VA, 2230
-              li
-                span.icon.material-icons call
-                a(href="#") +1 (409) 987–5874
-              li
-                span.icon.material-icons mail
-                a(href="#") info@demolink.org
-          .footer__item
-            .title.is-5.has-text-white
-              span Часы работы
-            ul
-              li
-                span Буднии дни:
-                span 8:00–20:00
-              li
-                span  Выходные дни:
-                span 8:00–20:00
-          .footer__item
-            .title.is-5.has-text-white
-              span Навигация по сайту
-            ul.footer__menu
-              li
-                a(href="#") Home
-              li
-                a(href="#") About Us
-              li
-                a(href="#") Services
-              li
-                a(href="#") Contacts
-              li
-                a(href="#") Pages
-              li
-                a(href="#") Services
+                    a.navbar-item Контакты
+        main
+            block content
+        footer.footer
+            .columns
+                .column
+                .column
+                    .footer__item
+                        .title.is-5.has-text-white
+                            span Контакты
+                        ul
+                            li
+                                span.icon.material-icons add_location
+                                a(href="#") 6036 Richmond hwy., Alexandria, VA, 2230
+                            li
+                                span.icon.material-icons call
+                                a(href="#") +1 (409) 987–5874
+                            li
+                                span.icon.material-icons mail
+                                a(href="#") info@demolink.org
+                    .footer__item
+                        .title.is-5.has-text-white
+                            span Часы работы
+                        ul
+                            li
+                                span Буднии дни:
+                                span 8:00–20:00
+                            li
+                                span  Выходные дни:
+                                span 8:00–20:00
+                    .footer__item
+                        .title.is-5.has-text-white
+                            span Навигация по сайту
+                        ul.footer__menu
+                            li
+                                a(href="#") Home
+                            li
+                                a(href="#") About Us
+                            li
+                                a(href="#") Services
+                            li
+                                a(href="#") Contacts
+                            li
+                                a(href="#") Pages
+                            li
+                                a(href="#") Services
+
+        script(src="/javascripts/app.js")

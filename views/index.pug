@@ -1,85 +1,22 @@
 extends layout
+include mixins/news-main
+include mixins/activity
 
 
 block content
-  section.main-slider
-    .container
-      .swiper-container#main-slider
-        .swiper-wrapper
-          .swiper-slide
-            .hero
-              img(src='./img/banner.png' width='1344' height='564')
-              .hero-body
-                .main-slider__wrap
-                  .title.is-2 Заголовок статьи
-                  a.button Подробнее
-      script var swiper = new Swiper('#main-slider');
+    section.main-slider
+        .container
+            .swiper-container#main-slider
+                .swiper-wrapper
+                    each activity in activities
+                        .swiper-slide
+                            +activityMain(activity)
 
-  .section
-    .container
-      .title.is-2.section-title Our Blog
-      .swiper-container#posts
-        .swiper-wrapper
-          .swiper-slide
-            .posts
-              a(href="#").posts__img
-                figure
-                  img(src="./img/card_1.png" width="460" height="396")
-              .posts__content
-                .title.is-5
-                  a(href="#") Google Launched Virtual Tours of 50 Museums
-                time(datetime="2020") October 26, 2020
-          .swiper-slide
-            .posts
-              a(href="#").posts__img
-                figure
-                  img(src="./img/card_1.png" width="460" height="396")
-              .posts__content
-                .title.is-5
-                  a(href="#") Google Launched Virtual Tours of 50 Museums
-                time(datetime="2020") October 26, 2020
-          .swiper-slide
-            .posts
-              a(href="#").posts__img
-                figure
-                  img(src="./img/card_1.png" width="460" height="396")
-              .posts__content
-                .title.is-5
-                  a(href="#") Google Launched Virtual Tours of 50 Museums
-                time(datetime="2020") October 26, 2020
-          .swiper-slide
-            .posts
-              a(href="#").posts__img
-                figure
-                  img(src="./img/card_1.png" width="460" height="396")
-              .posts__content
-                .title.is-5
-                  a(href="#") Google Launched Virtual Tours of 50 Museums
-                time(datetime="2020") October 26, 2020
-          .swiper-slide
-            .posts
-              a(href="#").posts__img
-                figure
-                  img(src="./img/card_1.png" width="460" height="396")
-              .posts__content
-                .title.is-5
-                  a(href="#") Google Launched Virtual Tours of 50 Museums
-                time(datetime="2020") October 26, 2020
-          .swiper-slide
-            .posts
-              a(href="#").posts__img
-                figure
-                  img(src="./img/card_1.png" width="460" height="396")
-              .posts__content
-                .title.is-5
-                  a(href="#") Google Launched Virtual Tours of 50 Museums
-                time(datetime="2020") October 26, 2020
-      script.
-        var mySwiper = new Swiper('#posts', {
-          slidesPerView: 3,
-          spaceBetween: 30,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-          },
-        });
+    .section
+        .container
+            .title.is-2.section-title Последние новости
+            .swiper-container#posts
+                .swiper-wrapper
+                    each news in newses
+                        .swiper-slide
+                            +newsMain(news)

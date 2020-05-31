@@ -6,14 +6,12 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const photosRouter = require('./routes/photos');
+const filesRouter = require('./routes/files');
 
 const app = express();
 
-const sequelizeConnect = require('./core/instance.sequelize')
-
-
-app.locals.title = "Vegetable World";
+app.locals.title = "Кольтурно-методический центр";
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,7 +31,8 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/photos', photosRouter);
+app.use('/files', filesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
