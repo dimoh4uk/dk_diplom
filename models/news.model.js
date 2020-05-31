@@ -1,4 +1,5 @@
 const names = require('../core/models-names');
+const helpers = require('../core/helpers');
 
 module.exports = (sequelize, DataTypes) => {
     const NewsModel = sequelize.define(names.news, {
@@ -11,6 +12,12 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         photo: DataTypes.STRING,
+        photoLink: {
+            type: DataTypes.VIRTUAL,
+            get: function () {
+                return helpers.createPhotoLink(this, names.news)
+            }
+        }
     }, {
         updatedAt: false
     });

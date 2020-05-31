@@ -7250,7 +7250,8 @@ label.panel-block {
     color: #af9f7b; }
 
 .footer__menu {
-  columns: 150px auto; }
+  columns: 150px 3;
+  max-width: 588px; }
   .footer__menu li.is-active a {
     color: #af9f7b; }
 
