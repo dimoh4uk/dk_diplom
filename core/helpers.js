@@ -5,3 +5,9 @@ exports.createPhotoLink = function (model, modelName, photoField = 'photo') {
 exports.createFileLink = function (model, modelName, fileField = 'file') {
     return `/files/${modelName}/${model.id}/${model[fileField]}`;
 }
+
+exports.toDateFormat = function (dateTime, date) {
+    return dateTime
+        .fromJSDate(date)
+        .toFormat("dd MMMM 'at' HH':'mm");
+}

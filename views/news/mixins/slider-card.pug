@@ -1,9 +1,9 @@
-mixin newsMain(news)
+mixin sliderCard(news)
     .posts
-        a(href=news.link).posts__img
+        a(href=news.detailLink).posts__img
             figure
                 img(src=news.photoLink width="460" height="396")
         .posts__content
             .title.is-5
-                a(href="#")= news.name
+                a(href=news.detailLink)= news.name
             time= news.date

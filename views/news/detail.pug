@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+    .columns
+        .column.is-10
+            h1= news.name
+            figure
+                img(src=news.photoLink width="460" height="396")
+            time= news.date
+            p= news.description
+
+        .column.is-2
+            h2= source.name
+            a(href=source.detailLink) Подробнее
