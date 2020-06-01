@@ -1,3 +1,4 @@
+const {DateTime} = require('luxon');
 const names = require('../core/models-names');
 const helpers = require('../core/helpers');
 
@@ -17,7 +18,19 @@ module.exports = (sequelize, DataTypes) => {
             get: function () {
                 return helpers.createPhotoLink(this, names.news)
             }
-        }
+        },
+        detailLink: {
+            type: DataTypes.VIRTUAL,
+            get: function () {
+                return `/${names.news}/${this.id}`
+            }
+        },
+        date: {
+            type: DataTypes.VIRTUAL,
+            get: function () {
+                return helpers.toDateFormat(DateTime, this.createdAt);
+            }
+        },
     }, {
         updatedAt: false
     });

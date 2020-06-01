@@ -22,6 +22,12 @@ module.exports = (sequelize, DataTypes) => {
         description: {
             type: DataTypes.TEXT,
             allowNull: true
+        },
+        detailLink: {
+            type: DataTypes.VIRTUAL,
+            get: function () {
+                return `/${names.culturalInstitution}/${this.id}`
+            }
         }
     }, {
         timestamps: false

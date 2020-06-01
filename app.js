@@ -6,8 +6,10 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 
 const indexRouter = require('./routes/index');
+const newsRouter = require('./routes/news');
 const photosRouter = require('./routes/photos');
 const filesRouter = require('./routes/files');
+const modelName = require('./core/models-names');
 
 const app = express();
 
@@ -30,9 +32,17 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//routing
 app.use('/', indexRouter);
+
+//files
 app.use('/photos', photosRouter);
 app.use('/files', filesRouter);
+
+//pages
+app.use(`/${modelName.news}`, newsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

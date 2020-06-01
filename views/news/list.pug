@@ -1,0 +1,10 @@
+extends ../layout
+include mixins/list-card
+
+
+block content
+    .container
+        ul
+            each item in newses
+                li
+                    +listCard(item)

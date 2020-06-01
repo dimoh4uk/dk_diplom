@@ -1,0 +1,19 @@
+extends ../layout
+
+mixin newsCard(model)
+    .posts
+        a(href=model.de).posts__img
+            figure
+                img(src=model.photoLink width="460" height="396")
+        .posts__content
+            .title.is-5
+                a(href="#")= model.name
+            time= model.date
+
+
+block content
+    .container
+        ul
+            each item in newses
+                li
+                    +newsCard(item)
