@@ -2,8 +2,8 @@
 $size-2: 36px;
 //$size-3: 2rem !default
 //$size-4: 1.5rem !default
-$size-5: 18px ;
-//$size-6: 1rem !default
+$size-5: 18px;
+$size-6: 16px;
 //$size-7: 0.75rem !default
 
 $primary: #af9f7b;
@@ -12,7 +12,7 @@ $white: white;
 $grey-darker: #363d41;
 $input-focus-box-shadow-color: $primary;
 $input-focus-border-color: $primary;
-$input-focus-box-shadow-size:0 0 0 0.07rem;
+$input-focus-box-shadow-size: 0 0 0 0.07rem;
 
 $navbar-item-color: $grey-darker;
 $navbar-item-hover-color: $primary;
@@ -21,6 +21,8 @@ $navbar-item-active-color: $primary;
 $navbar-item-active-background-color: transparent;
 $navbar-item-img-max-height: 4rem;
 
+$section-padding-medium: 80px 12px 90px;
+$title-color: black;
 $footer-background-color: $grey-darker;
 $footer-color: $white;
 $footer-padding: 3rem 1.5rem 6rem;

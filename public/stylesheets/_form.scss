@@ -1,0 +1,46 @@
+.main-form {
+  input.input {
+    height: 50px;
+  }
+
+  input.input, textarea.textarea {
+    position: relative;
+    box-shadow: none;
+    background-color: #f5f5f5;
+    color: #848484;
+    padding: 12px 15px;
+    border: 1px solid #f5f5f5;
+    border-radius: 0;
+    transition: border-color .25s;
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.07rem #af9f7b;
+      border-color: $primary;
+    }
+  }
+
+  button[type="submit"] {
+    border-radius: 0;
+    height: 100%;
+  }
+
+  &__validation {
+    &.is-active{
+      display: block;
+    }
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 3px;
+    font-size: 11px;
+    line-height: 11px;
+    color: #d9534f;
+    margin-top: 3px;
+    transition: .3s;
+    z-index: 11;
+  }
+}
