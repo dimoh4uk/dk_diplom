@@ -34,10 +34,10 @@ html
                     .navbar-item.has-dropdown.is-hoverable
                         a.navbar-link О нас
                         .navbar-dropdown
-                            a.navbar-item Об учреждении
+                            a(href='/about').navbar-item Об учреждении
                             a.navbar-item Организационная структура
-                            a.navbar-item Документы
-                            a.navbar-item Независимая оценка
+                            a.navbar-item Документы // перенести в отделения
+                            a.navbar-item Независимая оценка//
 
 
 
@@ -57,9 +57,10 @@ html
                             a.navbar-item Инф. об объектах культуры района
 
 
-                    a.navbar-item Контакты
+                    a(href="/contacts").navbar-item Контакты
         main
-            block content
+         .container
+             block content
         footer.footer
             .columns
                 .column

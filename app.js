@@ -5,11 +5,16 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 
+const modelName = require('./core/models-names');
+
 const indexRouter = require('./routes/index');
 const newsRouter = require('./routes/news');
+const activityRouter = require('./routes/activity');
 const photosRouter = require('./routes/photos');
 const filesRouter = require('./routes/files');
-const modelName = require('./core/models-names');
+const aboutRouter = require('./routes/about');
+const contactRouter = require('./routes/contacts');
+
 
 const app = express();
 
@@ -42,6 +47,9 @@ app.use('/files', filesRouter);
 
 //pages
 app.use(`/${modelName.news}`, newsRouter);
+app.use(`/${modelName.activity}`, activityRouter);
+app.use(`/about`, aboutRouter);
+app.use(`/contacts`, contactRouter);
 
 
 // catch 404 and forward to error handler

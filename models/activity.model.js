@@ -1,5 +1,6 @@
 const names = require('../core/models-names');
 const helpers = require('../core/helpers');
+const {DateTime} = require('luxon');
 
 module.exports = (sequelize, DataTypes) => {
     const ActivityModel = sequelize.define(names.activity, {
@@ -22,12 +23,32 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        createdAtDate: {
+            type: DataTypes.VIRTUAL,
+            get: function () {
+                return helpers.toDateFormat(DateTime, this.createdAt);
+            }
+        },
+        date: {
+            type: DataTypes.VIRTUAL,
+            get: function () {
+                const from = helpers.toDateFormat(DateTime, this.from);
+                const to = helpers.toDateFormat(DateTime, this.to);
+                return `${from} - ${to}`
+            }
+        },
         photoLink: {
             type: DataTypes.VIRTUAL,
             get: function () {
                 return helpers.createPhotoLink(this, names.activity)
             }
-        }
+        },
+        detailLink: {
+            type: DataTypes.VIRTUAL,
+            get: function () {
+                return `/${names.activity}/${this.id}`
+            }
+        },
     }, {
         timestamps: false
     });

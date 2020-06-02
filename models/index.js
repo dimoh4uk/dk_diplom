@@ -1,38 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
+const sequelize = require('../core/mssql.sequelize');
 const basename = path.basename(__filename);
 const db = {};
-
-const DB_CONFIG = {
-    userName: 'DBAdmin',
-    password: '123',
-    sampleDbName: 'TEST_BD',
-    hostName: 'localhost'
-};
-
-const MSSQL_CONFIG = {
-    hostName: 'localhost',
-    dialect: 'mssql'
-}
-
-const DB_INSTANCE_NAME = 'SQLTEST';
-
-const sequelize = new Sequelize(
-    DB_CONFIG.sampleDbName,
-    DB_CONFIG.userName,
-    DB_CONFIG.password,
-    {
-        dialect: MSSQL_CONFIG.dialect,
-        host: MSSQL_CONFIG.hostName,
-        dialectOptions: {
-            requestTimeout: 30000,
-            options: {
-                instanceName: DB_INSTANCE_NAME,
-            }
-        }
-    },
-);
 
 fs
     .readdirSync(__dirname)

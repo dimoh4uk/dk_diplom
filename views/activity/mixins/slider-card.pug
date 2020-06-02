@@ -1,7 +1,7 @@
-mixin activityMain(activity)
+mixin activitySliderCard(activity)
     .hero
         img(src=activity.photoLink width='1344' height='564')
         .hero-body
             .main-slider__wrap
                 .title.is-2= activity.name
-                a(href=activity.link).button Подробнее
+                a(href=activity.detailLink).button Подробнее

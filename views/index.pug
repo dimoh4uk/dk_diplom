@@ -1,18 +1,16 @@
 extends layout
 include news/mixins/slider-card
-include mixins/activity
+include activity/mixins/slider-card
 
 block content
     section.main-slider
-        .container
             .swiper-container#main-slider
                 .swiper-wrapper
                     each activity in activities
                         .swiper-slide
-                            +activityMain(activity)
+                            +activitySliderCard(activity)
 
     section.section
-        .container
             .title.is-2.section-title Последние новости
             .swiper-container#posts
                 .swiper-wrapper

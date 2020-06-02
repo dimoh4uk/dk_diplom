@@ -3,11 +3,12 @@ extends ../layout
 block content
     .columns
         .column.is-10
-            h1= news.name
+            h1= activity.name
             figure
-                img(src=news.photoLink width="460" height="396")
-            time= news.date
-            p= news.description
+                img(src=activity.photoLink width="460" height="396")
+            time= activity.date
+            p= 'ограничения'
+            p= activity.description
 
         .column.is-2
             h2= source.name

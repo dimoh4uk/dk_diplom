@@ -3,21 +3,21 @@ const mNames = require('../../core/models-names');
 const keys = require('../../core/foreign-keys');
 
 exports.list = async function (req, res) {
-    const newses = await models[mNames.news].findAll();
+    const activities = await models[mNames.activity].findAll();
 
-    res.render('news/list', {newses: newses});
+    res.render(`${mNames.activity}/list`, {activities: activities});
 };
 
 exports.detail = async function (req, res) {
     const params = req.params;
-    const news = await models[mNames.news].findByPk(params.id);
+    const activity = await models[mNames.activity].findByPk(params.id);
 
-    const sourceLink = calculateSource(news);
+    const sourceLink = calculateSource(activity);
     const sourceModel = sourceLink.model;
 
     const newsSource = await sourceModel.findByPk(sourceLink.key);
 
-    res.render('news/detail', {news: news, source: newsSource});
+    res.render(`${mNames.activity}/detail`, {activity: activity, source: newsSource});
 
 
     function calculateSource(news) {
