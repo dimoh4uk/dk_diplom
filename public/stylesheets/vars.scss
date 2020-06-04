@@ -6,6 +6,12 @@ $size-5: 18px;
 $size-6: 16px;
 //$size-7: 0.75rem !default
 
+$body-family: 'Roboto', sans-serif;
+$title-family: 'Oswald', sans-serif;
+
+$text: #848484;
+$body-size: 14px;
+$section-padding: 3rem 0;
 $primary: #af9f7b;
 $white: white;
 
@@ -25,4 +31,4 @@ $section-padding-medium: 80px 12px 90px;
 $title-color: black;
 $footer-background-color: $grey-darker;
 $footer-color: $white;
-$footer-padding: 3rem 1.5rem 6rem;
+$footer-padding: 3rem 1.5rem 3rem;

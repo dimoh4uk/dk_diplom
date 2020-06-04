@@ -1,5 +1,5 @@
 .header {
-  padding: 0 15px 25px;
+  padding: 0 15px;
 
   &__top {
     display: flex;
@@ -46,6 +46,7 @@
 
       .navbar-item {
         text-transform: uppercase;
+
         &:not(:last-child) {
           margin-right: 15px;
         }
@@ -55,7 +56,9 @@
         border-top: none;
         border-radius: 6px;
         box-shadow: 0px 0px 14px rgba(10, 10, 10, 0.1);
-        .navbar-item{
+
+        .navbar-item {
+          font-size: 14px;
           text-transform: none;
           margin-right: 0;
         }

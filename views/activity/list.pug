@@ -13,8 +13,12 @@ mixin activitCard(model)
 
 
 block content
-    .container
+    .head
+        img.head__img(src="/img/head_1.jpg")
+        .container
+            h1.head__title Мероприятия
+    .section
         .columns.is-multiline
             each item in activities
-                .column.is-4
+                .column.is-3-widescreen.is-4-desktop
                     +listCard(item)

@@ -4,55 +4,55 @@ block content
     .head
         img.head__img(src="/img/head_1.jpg")
         h1.head__title Контакты
+    .section
+        .columns
+            .column.is-8
+                .contact-box
+                    .title.is-2 Связаться с нами
+                    .text.
+                        Мы доступны 24/7 по факсу, электронной почте
+                        или по телефону. Вы также можете использовать
+                        нашу форму быстрой связи, чтобы задать вопрос
+                        о наших услугах. Мы будем рады ответить на
+                        ваши вопросы.
+                    form.main-form
+                        .columns.is-multiline
+                            .column.is-6
+                                .field
+                                    .control
+                                        input.input(type="text" placeholder="Ваше имя" required)
+                            .column.is-6
+                                .field
+                                    .control
+                                        input.input(type="phone" placeholder="Телефон" required)
+                            .column.is-12
+                                .field
+                                    .control
+                                        textarea.textarea(rows="4" placeholder="Ваше сообщение" required)
+                            .column.is-6
+                                .field
+                                    .control
+                                        input.input(type="email" placeholder="E-mail" required)
+                            .column.is-6
+                                button.button.is-primary.is-fullwidth(type="submit") Отправить сообщение
 
-    .columns
-        .column.is-8
-            .contact-box
-                .title.is-2 Связаться с нами
-                .text.
-                    Мы доступны 24/7 по факсу, электронной почте
-                    или по телефону. Вы также можете использовать
-                    нашу форму быстрой связи, чтобы задать вопрос
-                    о наших услугах. Мы будем рады ответить на
-                    ваши вопросы.
-                form.main-form
-                    .columns.is-multiline
-                        .column.is-6
-                            .field
-                                .control
-                                    input.input(type="text" placeholder="Ваше имя" required)
-                        .column.is-6
-                            .field
-                                .control
-                                    input.input(type="phone" placeholder="Телефон" required)
-                        .column.is-12
-                            .field
-                                .control
-                                    textarea.textarea(rows="4" placeholder="Ваше сообщение" required)
-                        .column.is-6
-                            .field
-                                .control
-                                    input.input(type="email" placeholder="E-mail" required)
-                        .column.is-6
-                            button.button.is-primary.is-fullwidth(type="submit") Отправить сообщение
-
-        .column
-            .contacts
-                .contacts__item
-                    .title.is-6 Телефон
-                    ul
-                        li
-                            span.icon.material-icons phone
-                            a(href="#") 1-800-1234-567
-                .contacts__item
-                    .title.is-6 Адрес
-                    ul
-                        li
-                            span.icon.material-icons add_location
-                            a(href="#") 6036 Richmond hwy., Alexandria, VA, 2230
-                .contacts__item
-                    .title.is-6 Время работы
-                    ul
-                        li
-                            span.icon.material-icons schedule
-                            span 9:00–23:00
+            .column
+                .contacts
+                    .contacts__item
+                        .title.is-6 Телефон
+                        ul
+                            li
+                                span.icon.material-icons phone
+                                a(href="#") 1-800-1234-567
+                    .contacts__item
+                        .title.is-6 Адрес
+                        ul
+                            li
+                                span.icon.material-icons add_location
+                                a(href="#") 6036 Richmond hwy., Alexandria, VA, 2230
+                    .contacts__item
+                        .title.is-6 Время работы
+                        ul
+                            li
+                                span.icon.material-icons schedule
+                                span 9:00–23:00

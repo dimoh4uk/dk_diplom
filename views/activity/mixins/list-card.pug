@@ -1,10 +1,14 @@
 mixin listCard(activity)
   .card.activity
+    a.block-link(href=activity.detailLink)
     .card-image
-      figure.image
+      figure.image.is-3by2
         img(src=activity.photoLink)
     .card-content
-      a(href=activity.detailLink).activity__title= activity.name
+      .activity__title= activity.name
       time= activity.date
       p Ограничение: #{activity.limitations}
-      a(href=activity.detailLink).activity__more Читать дальше
+      .activity__read
+        .activity__dot
+        a(href=activity.detailLink).activity__more Читать дальше
+          span.material-icons arrow_forward

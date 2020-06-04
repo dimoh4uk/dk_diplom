@@ -1,78 +1,79 @@
 doctype html
 html
-    head
-        title= title
-        meta(name="viewport" content="width=device-width, initial-scale=1")
-        link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
-        link(rel='stylesheet', href='/stylesheets/style.css')
-        link(href='https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap' rel='stylesheet')
-        link(rel='stylesheet' href='https://unpkg.com/swiper/css/swiper.min.css')
-        script(src='https://unpkg.com/swiper/js/swiper.min.js')
-    body
-        header.header
-            .header__top
-                a.navbar-burger.burger(role='button' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample')
-                    span(aria-hidden='true')
-                    span(aria-hidden='true')
-                    span(aria-hidden='true')
-                a(href="/")
-                    img(src='/img/logo_2.png' width='150' height='84')
-                a(href='/')
-                    img(src='/img/logo_1.png' width='400' height='100')
-                .has-text-right
-                    a(href="#").header__phone
-                        span.icon
-                            span.material-icons call
-                        span 1-255-4464645
-                    .header__search
-                        form
-                            .field
-                                .control
-                                    input.input(type="text" placeholder="Поиск по сайту ")
-            .header__menu.navbar
-                .navbar-menu
+  head
+    title= title
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet")
+    link(rel='stylesheet' href='https://unpkg.com/swiper/css/swiper.min.css')
+    script(src='https://unpkg.com/swiper/js/swiper.min.js')
+  body
+    header.header
+      .container
+        .header__top
+          a.navbar-burger.burger(role='button' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample')
+            span(aria-hidden='true')
+            span(aria-hidden='true')
+            span(aria-hidden='true')
+          a(href="/")
+            img(src='/img/logo_2.png' width='150' height='84')
+          a(href='/')
+            img(src='/img/logo_1.png' width='400' height='100')
+          .has-text-right
+            a(href="#").header__phone
+              span.icon
+                span.material-icons call
+              span 1-255-4464645
+            .header__search
+              form
+                .field
+                  .control
+                    input.input(type="text" placeholder="Поиск по сайту ")
+        .header__menu.navbar
+          .navbar-menu
 
-                    a(href='/about').navbar-item О нас
-                    a(href='/department').navbar-item Отделения центра
-                    .navbar-item.has-dropdown.is-hoverable
-                        a.navbar-link Услуги
-                        .navbar-dropdown
-                            a(href='/activity').navbar-item Афиша мероприятий
-                            a(href='/activity').navbar-item Афиша экскурсий
-                            a(href='/activity').navbar-item Платные услуги
-                    a(href='/about').navbar-item Культурные объекты
-                    a(href='/news').navbar-item Новости
-                    a(href="/contacts").navbar-item Контакты
-        main
-            .container
-                block content
+            a(href='/about').navbar-item О нас
+            a(href='/department').navbar-item Отделения центра
+            .navbar-item.has-dropdown.is-hoverable
+              a.navbar-link Услуги
+              .navbar-dropdown
+                a(href='/activity').navbar-item Афиша мероприятий
+                a(href='/activity').navbar-item Афиша экскурсий
+                a(href='/activity').navbar-item Платные услуги
+            a(href='/about').navbar-item Культурные объекты
+            a(href='/news').navbar-item Новости
+            a(href="/contacts").navbar-item Контакты
+    main
+      .container
+        block content
 
-        footer.footer
-            .columns
-                .column
-                .column
-                    .footer__item
-                        .title.is-5.has-text-white
-                            span Прием граждан по личным вопросам
-                        ul
-                            li
-                                span.icon.material-icons alarm
-                                a(href="#") 14.00 – 15.00
-                            li
-                                span.icon.material-icons add_location
-                                a(href="https://yandex.ru/maps/-/CCQdJOF1KA" target="_blank") п. Гайны, ул. Дзержинского, 40
-                            li
-                                span.icon.material-icons call
-                                a(href="tel:2-10-98") 2-10-98
-                            li
-                                span.icon.material-icons mail
-                                a(href="mailto:") Надежда Ивановна Костюкевич
-                    .footer__item
-                        .title.is-5.has-text-white
-                            span Часы работы
-                        ul
-                            li ПН-ПТ: 9.00 – 18.00
-                            li Перерыв на обед 13.00 – 14.00
-                            li СБ , ВС:  в зависимости от мероприятий
+    footer.footer
+      .columns
+        .column
+        .column
+          .footer__item
+            .title.is-5.has-text-white
+              span Прием граждан по личным вопросам
+            ul
+              li
+                span.icon.material-icons alarm
+                a(href="#") 14.00 – 15.00
+              li
+                span.icon.material-icons add_location
+                a(href="https://yandex.ru/maps/-/CCQdJOF1KA" target="_blank") п. Гайны, ул. Дзержинского, 40
+              li
+                span.icon.material-icons call
+                a(href="tel:2-10-98") 2-10-98
+              li
+                span.icon.material-icons mail
+                a(href="mailto:") Надежда Ивановна Костюкевич
+          .footer__item
+            .title.is-5.has-text-white
+              span Часы работы
+            ul
+              li ПН-ПТ: 9.00 – 18.00
+              li Перерыв на обед 13.00 – 14.00
+              li СБ , ВС:  в зависимости от мероприятий
 
-        script(src="/javascripts/app.js")
+    script(src="/javascripts/app.js")
