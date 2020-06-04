@@ -16,12 +16,26 @@ module.exports.initBaseRole = () => {
 let count = 0;
 
 function createFiles() {
-    return models[names.document].bulkCreate([
-        {name: 'filename' + count++, link: 'README.md'},
-        {name: 'filename' + count++, link: 'README.md'},
-        {name: 'filename' + count++, link: 'README.md'},
-        {name: 'filename' + count++, link: 'README.md'},
-    ])
+    const c = {name: 'filename' + count++, link: 'README.md'};
+    return models[names.document]
+        .bulkCreate(Array(3).fill(c));
+}
+
+function createExcursions() {
+    const config = () => {
+        return {
+            name: 'test excursion',
+            from: DateTime.local().minus({day: 1}).toJSDate(),
+            to: DateTime.local().plus({day: 10}).toJSDate(),
+            description: ' asda sdas as wfjkweofj sodjfsodjf sodhfsidgf8qywfe wvsashdbv ajshdvaj shdvaj hsvdbuavfquwv qwda',
+            price: '1000.4 р.',
+            limitations: '10+',
+            photo: '7d36.jpg',
+        }
+    };
+
+    return models[names.excursion]
+        .bulkCreate(Array(1).fill(config()));
 }
 
 function createDepartments(end) {
@@ -34,10 +48,8 @@ function createDepartments(end) {
     }
 
     const q = async.queue(async function (department, callback) {
-        const files = await createFiles();
-
-        department.setDocuments(files);
-
+        await department.setDocuments(await createFiles());
+        await department.setExcursions(await createExcursions());
         await createActivities(department);
         await createNewses(department);
         callback();
@@ -53,8 +65,8 @@ function createDepartments(end) {
 function createActivities(d) {
     const config = {
         name: 'name',
-        from: DateTime.local().toISO(),
-        to: DateTime.local().plus({days: 1}).toISO(),
+        from: DateTime.local().toJSDate(),
+        to: DateTime.local().plus({days: 1}).toJSDate(),
         description: 'NTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
             'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
             'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +

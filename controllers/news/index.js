@@ -3,7 +3,11 @@ const mNames = require('../../core/models-names');
 const keys = require('../../core/foreign-keys');
 
 exports.list = async function (req, res) {
-    const newses = await models[mNames.news].findAll();
+    const newses = await models[mNames.news].findAll({
+        order: [
+            ['id', 'DESC'],
+        ],
+    });
 
     res.render('news/list', {newses: newses});
 };

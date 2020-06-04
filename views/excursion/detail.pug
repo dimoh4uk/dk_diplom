@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+    .columns
+        .column
+            h1=excursion.name
+            img(src=excursion.photoLink)
+            p Время проведения: #{excursion.date}
+            p Цена: #{excursion.price}
+            p ограничения: #{excursion.limitations}
+            p Организатор
+                a(href=department.detailLink)=department.name
+
+            p=excursion.description
+
+
+            .form
+                form(action='/excursion/request' method='POST')
+                    input(name='excursionId' class='is-hide')
+                    input(name="clientName")
+                    input(name="tel")
+                    input(name="email")
+                    textarea(name="message")
+                    button(type='submit') Отправить

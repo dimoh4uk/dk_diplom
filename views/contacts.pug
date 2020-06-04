@@ -15,24 +15,24 @@ block content
                     нашу форму быстрой связи, чтобы задать вопрос
                     о наших услугах. Мы будем рады ответить на
                     ваши вопросы.
-                form.main-form
+                form.main-form(action='/contacts/request' method='POST')
                     .columns.is-multiline
                         .column.is-6
                             .field
                                 .control
-                                    input.input(type="text" placeholder="Ваше имя" required)
+                                    input.input(type="text" placeholder="Ваше имя" name="userName" required)
                         .column.is-6
                             .field
                                 .control
-                                    input.input(type="phone" placeholder="Телефон" required)
+                                    input.input(type="phone" placeholder="Телефон" name="tel" required)
                         .column.is-12
                             .field
                                 .control
-                                    textarea.textarea(rows="4" placeholder="Ваше сообщение" required)
+                                    textarea.textarea(rows="4" placeholder="Ваше сообщение" name="message" required)
                         .column.is-6
                             .field
                                 .control
-                                    input.input(type="email" placeholder="E-mail" required)
+                                    input.input(type="email" placeholder="E-mail" name="email"  required)
                         .column.is-6
                             button.button.is-primary.is-fullwidth(type="submit") Отправить сообщение
 

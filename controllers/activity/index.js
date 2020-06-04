@@ -1,9 +1,21 @@
+const {Op} = require("sequelize");
 const models = require('../../models');
 const mNames = require('../../core/models-names');
 const keys = require('../../core/foreign-keys');
+const {DateTime} = require('luxon');
+
 
 exports.list = async function (req, res) {
-    const activities = await models[mNames.activity].findAll();
+    const activities = await models[mNames.activity].findAll({
+        where: {
+            to: {
+                [Op.gt]: DateTime.local().toJSDate(),
+            }
+        },
+        order: [
+            ['id', 'DESC'],
+        ],
+    });
 
     res.render(`${mNames.activity}/list`, {activities: activities});
 };

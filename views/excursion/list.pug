@@ -1,0 +1,9 @@
+extends ../layout
+include ./mixins/list-card
+
+
+block content
+        ul
+            each item in excursions
+                li
+                    +listCard(item)

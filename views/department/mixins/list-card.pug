@@ -6,7 +6,14 @@ mixin listCard(model)
                     figure
                         img(src=model.photoLink)
             .column
-                .posts__content
-                    .title.is-5
-                        a(href=model.detailLink)= model.name
-                    time= model.date
+                .title.is-5
+                    p
+                        a.title(href=model.detailLink)= model.name
+                    p address: #{model.address}
+                    p tel: #{model.tel}
+
+                    //Ограничить высоту
+                    p.descprition= model.description
+                    p
+                        a.button(href=model.detailLink) Подробнее
+                time= model.date
