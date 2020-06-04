@@ -1,13 +1,10 @@
 mixin listCard(activity)
-    .card
-        .card-image
-            figure.image
-                img(src=activity.photoLink)
-        .card-content
-            .media-content
-                .title= activity.name
-            .content
-                p
-                    time= activity.date
-                p Ограничение: #{activity.limitations}
-                a(href=activity.detailLink).button Подробнее
+  .card.activity
+    .card-image
+      figure.image
+        img(src=activity.photoLink)
+    .card-content
+      a(href=activity.detailLink).activity__title= activity.name
+      time= activity.date
+      p Ограничение: #{activity.limitations}
+      a(href=activity.detailLink).activity__more Читать дальше
