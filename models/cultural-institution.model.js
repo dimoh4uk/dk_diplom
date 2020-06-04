@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TEXT,
             allowNull: true
         },
+        link: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         detailLink: {
             type: DataTypes.VIRTUAL,
             get: function () {

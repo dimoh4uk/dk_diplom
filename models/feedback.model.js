@@ -24,3 +24,7 @@ module.exports = (sequelize, DataTypes) => {
 
     return FeedbackModel;
 };
+
+// cultural-institution.model name
+// activity.model name
+// newse name

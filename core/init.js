@@ -7,9 +7,21 @@ const keys = require('../core/foreign-keys')
 
 
 module.exports.initBaseRole = () => {
-    return new Promise((res, rej) => {
+    return new Promise(async (res, rej) => {
+
         createDepartments(res);
     })
+}
+
+let count = 0;
+
+function createFiles() {
+    return models[names.document].bulkCreate([
+        {name: 'filename' + count++, link: 'README.md'},
+        {name: 'filename' + count++, link: 'README.md'},
+        {name: 'filename' + count++, link: 'README.md'},
+        {name: 'filename' + count++, link: 'README.md'},
+    ])
 }
 
 function createDepartments(end) {
@@ -17,11 +29,15 @@ function createDepartments(end) {
         name: 'name',
         tel: 'tel',
         address: 'address',
-        photo: 'photo',
+        photo: 'banner.png',
         description: 'asdadasdasd',
     }
 
     const q = async.queue(async function (department, callback) {
+        const files = await createFiles();
+
+        department.setDocuments(files);
+
         await createActivities(department);
         await createNewses(department);
         callback();
@@ -30,7 +46,6 @@ function createDepartments(end) {
 
     for (let i = 0; i < 10; i++) {
         models[names.department].create({...config}).then((d) => q.push(d));
-        Object.keys(config).forEach((k) => config[k] += i);
     }
     q.drain(end);
 }
