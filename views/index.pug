@@ -3,17 +3,17 @@ include news/mixins/slider-card
 include activity/mixins/slider-card
 
 block content
-    section.main-slider
-            .swiper-container#main-slider
-                .swiper-wrapper
-                    each activity in activities
-                        .swiper-slide
-                            +activitySliderCard(activity)
+  section.main-slider
+    .swiper-container#main-slider
+      .swiper-wrapper
+        each activity in activities
+          .swiper-slide
+            +activitySliderCard(activity)
 
-    section.section
-            .title.is-2.section-title Последние новости
-            .swiper-container#posts
-                .swiper-wrapper
-                    each news in newses
-                        .swiper-slide
-                            +sliderCard(news)
+  section.section
+    .title.is-2.section-title Последние новости
+    .swiper-container#posts
+      .swiper-wrapper
+        each news in newses
+          .swiper-slide
+            +sliderCard(news)

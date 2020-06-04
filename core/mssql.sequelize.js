@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize');
 
 const DB_CONFIG = {
-    userName: 'DBAdmin',
+    userName: 'TEST_DB',
     password: '123',
     sampleDbName: 'TEST_BD',
-    hostName: 'localhost'
+    // hostName: 'localhost'
 };
 
 const MSSQL_CONFIG = {
@@ -12,7 +12,7 @@ const MSSQL_CONFIG = {
     dialect: 'mssql'
 }
 
-const DB_INSTANCE_NAME = 'SQLTEST';
+const DB_INSTANCE_NAME = 'SQLEXPRESS';
 
 module.exports = new Sequelize(
     DB_CONFIG.sampleDbName,

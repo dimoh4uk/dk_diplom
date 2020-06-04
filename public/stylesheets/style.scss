@@ -32,7 +32,9 @@ a {
   padding: 6.5% 12px;
   position: relative;
   overflow: hidden;
-
+  width: 100vw;
+  transform: translateX(-50%);
+  left: 50%;
   &__img {
     position: absolute;
     top: 0;
