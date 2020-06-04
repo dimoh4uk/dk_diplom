@@ -31,78 +31,48 @@ html
                                     input.input(type="text" placeholder="Поиск по сайту ")
             .header__menu.navbar
                 .navbar-menu
-                    .navbar-item.has-dropdown.is-hoverable
-                        a.navbar-link О нас
-                        .navbar-dropdown
-                            a(href='/about').navbar-item Об учреждении
-                            a.navbar-item Организационная структура
-                            a.navbar-item Документы // перенести в отделения
-                            a.navbar-item Независимая оценка//
 
-
-
-                    .navbar-item.has-dropdown.is-hoverable
-                        a.navbar-link Отделения центра
-                        .navbar-dropdown
-                            a.navbar-item Информация о музее и домах культуры
+                    a(href='/about').navbar-item О нас
+                    a(href='/department').navbar-item Отделения центра
                     .navbar-item.has-dropdown.is-hoverable
                         a.navbar-link Услуги
                         .navbar-dropdown
-                            a.navbar-item Афиша мероприятий
-                            a.navbar-item Афиша экскурсий
-                            a.navbar-item Платные услуги
-                    .navbar-item.has-dropdown.is-hoverable
-                        a.navbar-link Культурные объекты
-                        .navbar-dropdown
-                            a.navbar-item Инф. об объектах культуры района
-
-
+                            a(href='/activity').navbar-item Афиша мероприятий
+                            a(href='/activity').navbar-item Афиша экскурсий
+                            a(href='/activity').navbar-item Платные услуги
+                    a(href='/about').navbar-item Культурные объекты
+                    a(href='/news').navbar-item Новости
                     a(href="/contacts").navbar-item Контакты
         main
-         .container
-             block content
+            .container
+                block content
+
         footer.footer
             .columns
                 .column
                 .column
                     .footer__item
                         .title.is-5.has-text-white
-                            span Контакты
+                            span Прием граждан по личным вопросам
                         ul
                             li
+                                span.icon.material-icons alarm
+                                a(href="#") 14.00 – 15.00
+                            li
                                 span.icon.material-icons add_location
-                                a(href="#") 6036 Richmond hwy., Alexandria, VA, 2230
+                                a(href="https://yandex.ru/maps/-/CCQdJOF1KA" target="_blank") п. Гайны, ул. Дзержинского, 40
                             li
                                 span.icon.material-icons call
-                                a(href="#") +1 (409) 987–5874
+                                a(href="tel:2-10-98") 2-10-98
                             li
                                 span.icon.material-icons mail
-                                a(href="#") info@demolink.org
+                                a(href="mailto:") Надежда Ивановна Костюкевич
                     .footer__item
                         .title.is-5.has-text-white
                             span Часы работы
                         ul
-                            li
-                                span Буднии дни:
-                                span 8:00–20:00
-                            li
-                                span  Выходные дни:
-                                span 8:00–20:00
-                    .footer__item
-                        .title.is-5.has-text-white
-                            span Навигация по сайту
-                        ul.footer__menu
-                            li
-                                a(href="#") Home
-                            li
-                                a(href="#") About Us
-                            li
-                                a(href="#") Services
-                            li
-                                a(href="#") Contacts
-                            li
-                                a(href="#") Pages
-                            li
-                                a(href="#") Services
+                            li ПН-ПТ: 9.00 – 18.00
+                            li Перерыв на обед 13.00 – 14.00
+                            li СБ , ВС:  в зависимости от мероприятий
 
         script(src="/javascripts/app.js")

@@ -13,6 +13,7 @@ const activityRouter = require('./routes/activity');
 const photosRouter = require('./routes/photos');
 const filesRouter = require('./routes/files');
 const aboutRouter = require('./routes/about');
+const departmentRouter = require('./routes/department');
 const contactRouter = require('./routes/contacts');
 
 
@@ -48,6 +49,7 @@ app.use('/files', filesRouter);
 //pages
 app.use(`/${modelName.news}`, newsRouter);
 app.use(`/${modelName.activity}`, activityRouter);
+app.use(`/${modelName.department}`, departmentRouter);
 app.use(`/about`, aboutRouter);
 app.use(`/contacts`, contactRouter);
 

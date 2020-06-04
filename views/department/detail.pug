@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+
+    h1= department.name
+    figure
+        img(src=department.photoLink width="460" height="396")
+
+    p= department.description
+
+    p Адрес: #{department.address}
+    p tel: #{department.tel}
+
+    ul
+        each document in department.documents
+            li
+                a(href="file://localhost:3000/files/1/README.md")= document.name

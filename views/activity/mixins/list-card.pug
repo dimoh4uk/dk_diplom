@@ -9,4 +9,6 @@ mixin listCard(activity)
             .content
                 p
                     time= activity.date
+                p Ограничение: #{activity.limitations}
+
                 a(href=activity.detailLink).button Подробнее
