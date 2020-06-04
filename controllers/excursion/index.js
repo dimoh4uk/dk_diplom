@@ -25,7 +25,7 @@ exports.detail = async function (req, res) {
     const excursion = await models[mNames.excursion].findByPk(params.id);
     const department = await models[mNames.department].findByPk(excursion[keys.departmentId]);
 
-    res.render(`${mNames.excursion}/detail`, {excursion, department});
+    res.render(`${mNames.excursion}/detail`, {excursion, department, excursionId:params.id});
 }
 
 exports.formRequest = async function (req, res) {

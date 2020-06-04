@@ -1,0 +1,5 @@
+mixin listCard(model)
+    a(href=model.detailLink)= model.name
+    p price: #{model.price}
+    p description: #{model.description}
+    a(href=model.detailLink) подробнее

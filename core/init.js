@@ -21,6 +21,19 @@ function createFiles() {
         .bulkCreate(Array(3).fill(c));
 }
 
+function createServices() {
+    const config = () => {
+        return {
+            name: 'test service',
+            price: "123,5123.d",
+            description: 'description',
+        }
+    };
+
+    return models[names.service]
+        .bulkCreate(Array(1).fill(config()));
+}
+
 function createExcursions() {
     const config = () => {
         return {
@@ -50,6 +63,7 @@ function createDepartments(end) {
     const q = async.queue(async function (department, callback) {
         await department.setDocuments(await createFiles());
         await department.setExcursions(await createExcursions());
+        await department.setServices(await createServices());
         await createActivities(department);
         await createNewses(department);
         callback();

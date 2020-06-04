@@ -3,7 +3,6 @@ const mNames = require('../../core/models-names');
 
 exports.list = async function (req, res) {
     const departments = await models[mNames.department].findAll();
-    console.log("asdasd", JSON.stringify(departments));
     res.render(`${mNames.department}/list`, {departments: departments});
 };
 
