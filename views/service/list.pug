@@ -1,0 +1,10 @@
+extends ../layout
+include ./mixins/list-card
+
+
+block content
+        // я хз как красивовыводить у них нет фото, может просто тобличку
+        ul
+            each item in services
+                li
+                    +listCard(item)

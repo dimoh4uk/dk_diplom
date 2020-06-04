@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    .columns
+        .column.is-10
+            h1= service.name
+            img(src=service.photoLink)
+            time= service.date
+            p= service.description
+            .form
+                form(action='/excursion/request' method='POST')
+                    input(name='serviceId' class='is-hide' value=serviceId)
+                    input(name="clientName")
+                    input(name="tel")
+                    input(name="email")
+                    textarea(name="message")
+                    button(type='submit') Отправить
+
+        .column.is-2
+            h2= source.name
+            a(href=source.detailLink) Подробнее

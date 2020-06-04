@@ -1,5 +1,6 @@
 const names = require('../core/models-names');
 const keys = require('../core/foreign-keys');
+const helpers = require('../core/helpers');
 
 module.exports = (sequelize, DataTypes) => {
     const ServiceModel = sequelize.define(names.service, {
@@ -14,6 +15,12 @@ module.exports = (sequelize, DataTypes) => {
         description: {
             type: DataTypes.TEXT,
             allowNull: false
+        },
+        detailLink: {
+            type: DataTypes.VIRTUAL,
+            get: function () {
+                return `/${names.service}/${this.id}`
+            }
         }
     }, {
         updatedAt: false

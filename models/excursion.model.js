@@ -1,5 +1,7 @@
 const names = require('../core/models-names');
 const keys = require('../core/foreign-keys');
+const helpers = require('../core/helpers');
+const {DateTime} = require('luxon');
 
 module.exports = (sequelize, DataTypes) => {
     const ExcursionModel = sequelize.define(names.excursion, {
@@ -25,6 +27,26 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        date: {
+            type: DataTypes.VIRTUAL,
+            get: function () {
+                const from = helpers.toDateFormat(DateTime, this.from);
+                const to = helpers.toDateFormat(DateTime, this.to);
+                return `${from} - ${to}`
+            }
+        },
+        photoLink: {
+            type: DataTypes.VIRTUAL,
+            get: function () {
+                return helpers.createPhotoLink(this, names.excursion)
+            }
+        },
+        detailLink: {
+            type: DataTypes.VIRTUAL,
+            get: function () {
+                return `/${names.excursion}/${this.id}`
+            }
+        }
     }, {
         updatedAt: false
     });

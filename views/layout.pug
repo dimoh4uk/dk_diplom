@@ -32,21 +32,21 @@ html
                     input.input(type="text" placeholder="Поиск по сайту ")
         .header__menu.navbar
           .navbar-menu
-
-            a(href='/about').navbar-item О нас
-            a(href='/department').navbar-item Отделения центра
-            .navbar-item.has-dropdown.is-hoverable
-              a.navbar-link Услуги
-              .navbar-dropdown
-                a(href='/activity').navbar-item Афиша мероприятий
-                a(href='/activity').navbar-item Афиша экскурсий
-                a(href='/activity').navbar-item Платные услуги
-            a(href='/about').navbar-item Культурные объекты
-            a(href='/news').navbar-item Новости
-            a(href="/contacts").navbar-item Контакты
+              a(href='/').navbar-item Главная
+              a(href='/about').navbar-item О нас
+              a(href='/department').navbar-item Отделения центра
+              .navbar-item.has-dropdown.is-hoverable
+                  a.navbar-link Услуги
+                  .navbar-dropdown
+                      a(href='/activity').navbar-item Афиша мероприятий
+                      a(href='/excursion').navbar-item Афиша экскурсий
+                      a(href='/service').navbar-item Платные услуги
+              a(href='/about').navbar-item Культурные объекты
+              a(href='/news').navbar-item Новости
+              a(href="/contacts").navbar-item Контакты
     main
-      .container
-        block content
+        .container
+            block content
 
     footer.footer
       .columns

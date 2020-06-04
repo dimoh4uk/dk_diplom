@@ -1,35 +1,27 @@
-const {Op} = require("sequelize");
 const models = require('../../models');
 const mNames = require('../../core/models-names');
 const keys = require('../../core/foreign-keys');
-const {DateTime} = require('luxon');
-
 
 exports.list = async function (req, res) {
-    const activities = await models[mNames.activity].findAll({
-        where: {
-            to: {
-                [Op.gt]: DateTime.local().toJSDate(),
-            }
-        },
+    const services = await models[mNames.service].findAll({
         order: [
             ['id', 'DESC'],
         ],
     });
 
-    res.render(`${mNames.activity}/list`, {activities: activities});
+    res.render(`${mNames.service}/list`, {services});
 };
 
 exports.detail = async function (req, res) {
     const params = req.params;
-    const activity = await models[mNames.activity].findByPk(params.id);
+    const service = await models[mNames.service].findByPk(params.id);
 
-    const sourceLink = calculateSource(activity);
+    const sourceLink = calculateSource(service);
     const sourceModel = sourceLink.model;
 
-    const newsSource = await sourceModel.findByPk(sourceLink.key);
+    const source = await sourceModel.findByPk(sourceLink.key);
 
-    res.render(`${mNames.activity}/detail`, {activity: activity, source: newsSource});
+    res.render('service/detail', {service, source});
 
 
     function calculateSource(news) {
@@ -44,4 +36,14 @@ exports.detail = async function (req, res) {
 
         return news[keys.departmentId] ? department : culturalInstitution
     }
+}
+
+exports.formRequest = async function (req, res) {
+    console.log("asdasdasd")
+    const params = req.params;
+    const backUrl = '/asdasdasasdasd';
+    const excursion = {name: 'сплав на хуй'};
+    const text = `Ваша заявка на экскурсию ${excursion.name} успешно принята`
+
+    res.render('thanks-page', {backUrl, text});
 }
