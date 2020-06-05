@@ -16,9 +16,8 @@ exports.toDateFormat = function (dateTime, date) {
 }
 
 exports.loadSource = function (model, sources) {
-//TODO
+//TODO calculateSource here
 }
-
 
 function calculateSource(news) {
     const department = {

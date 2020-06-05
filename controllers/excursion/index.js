@@ -25,15 +25,16 @@ exports.detail = async function (req, res) {
     const excursion = await models[mNames.excursion].findByPk(params.id);
     const department = await models[mNames.department].findByPk(excursion[keys.departmentId]);
 
-    res.render(`${mNames.excursion}/detail`, {excursion, department, excursionId:params.id});
+    res.render(`${mNames.excursion}/detail`, {excursion, department, excursionId: params.id});
 }
 
 exports.formRequest = async function (req, res) {
-    console.log("asdasdasd")
-    const params = req.params;
-    const backUrl = '/asdasdasasdasd';
-    const excursion = {name: 'сплав на хуй'};
+    const data = {...req.body, [keys.statusId]: 1};
+    const excursion = await models[mNames.excursion].findByPk(data.excursionId);
+    const backUrl = excursion.detailLink;
     const text = `Ваша заявка на экскурсию ${excursion.name} успешно принята`
+
+    await models[mNames.excursionRequest].create(data);
 
     res.render('thanks-page', {backUrl, text});
 }

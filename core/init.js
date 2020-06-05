@@ -6,17 +6,40 @@ const names = require('../core/models-names')
 const keys = require('../core/foreign-keys')
 
 
-module.exports.initBaseRole = () => {
-    return new Promise(async (res, rej) => {
-
-        createDepartments(res);
-    })
+module.exports.initBaseRole = async () => {
+    await createStatuses();
+    await Promise.all(
+        await createCulturalCentres()
+            .map(async (c) => {
+                c.setDepartments(await createDepartments());
+                c.setActivities(await createActivities());
+                c.setNews(await createNewses());
+            })
+    );
 }
 
-let count = 0;
+function createCulturalCentres() {
+    const c = {
+        name: 'test cultural',
+        tel: '8 888 888 88 888',
+        address: 'asd sdf sdf we zssd 89-39',
+        photo: 'banner.png',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sodales diam venenatis nunc porttitor faucibus. Ut fermentum, neque hendrerit eleifend ornare, arcu est fringilla orci, ornare hendrerit  in quam a arcu porttitor dignissim. Suspendisse pretium, lorem vitae iaculis vulputate, ante lorem accumsan ipsum, ullamcorper molestie ante dui ac metus. In commodo dui at neque posuere finibus. Nulla condimentum tortor vitae rhoncus imperdiet.',
+        link: 'asdasdasdas',
+    };
+    return models[names.culturalInstitution]
+        .bulkCreate(Array(3).fill(c))
+}
+
+function createStatuses() {
+    return models[names.requestStatus].bulkCreate([
+        {name: 'opened'},
+        {name: 'closed'},
+    ]);
+}
 
 function createFiles() {
-    const c = {name: 'filename' + count++, link: 'README.md'};
+    const c = {name: 'filename', link: 'README.md'};
     return models[names.document]
         .bulkCreate(Array(3).fill(c));
 }
@@ -51,84 +74,74 @@ function createExcursions() {
         .bulkCreate(Array(1).fill(config()));
 }
 
-function createDepartments(end) {
-    const config = {
-        name: 'Таким образом консультация с широким активом позволяет оценить значение дальнейших направлений развития.',
-        tel: '+79526465875',
-        address: 'п. Гайны, ул. Дзержинского, 40',
-        photo: 'banner.png',
-        description: 'Идейные соображения высшего порядка, а также постоянный количественный рост и сфера нашей активности представляет собой интересный эксперимент проверки систем массового участия. Идейные соображения высшего порядка, а также начало повседневной работы по формированию позиции в значительной степени обуславливает создание позиций, занимаемых участниками в отношении поставленных задач',
+function createDepartments() {
+    const config = () => {
+        return {
+            name: 'Таким образом консультация с широким активом позволяет оценить значение дальнейших направлений развития.',
+            tel: '+79526465875',
+            address: 'п. Гайны, ул. Дзержинского, 40',
+            photo: 'banner.png',
+            description: 'Идейные соображения высшего порядка, а также постоянный количественный рост и сфера нашей активности представляет собой интересный эксперимент проверки систем массового участия. Идейные соображения высшего порядка, а также начало повседневной работы по формированию позиции в значительной степени обуславливает создание позиций, занимаемых участниками в отношении поставленных задач',
+        }
     }
 
-    const q = async.queue(async function (department, callback) {
-        await department.setDocuments(await createFiles());
-        await department.setExcursions(await createExcursions());
-        await department.setServices(await createServices());
-        await createActivities(department);
-        await createNewses(department);
-        callback();
-    }, 4);
-
-
-    for (let i = 0; i < 10; i++) {
-        models[names.department].create({...config}).then((d) => q.push(d));
-    }
-    q.drain(end);
+    return Promise.all(Array(3)
+        .fill(config())
+        .map(async (c) => {
+            const department = await models[names.department].create(c);
+            await Promise.all([
+                department.setDocuments(await createFiles()),
+                department.setExcursions(await createExcursions()),
+                department.setServices(await createServices()),
+                department.setActivities(await createActivities()),
+                department.setNews(await createNewses()),
+            ]);
+            return department;
+        })
+    );
 }
 
-function createActivities(d) {
-    const config = {
-        name: 'name',
-        from: DateTime.local().toJSDate(),
-        to: DateTime.local().plus({days: 1}).toJSDate(),
-        description: 'NTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3',
-        price: '1231231231',
-        limitations: '18+',
-        photo: 'banner.png',
-        [keys.departmentId]: d.id,
-    }
-
-    const q = async.queue(function (department, callback) {
-        callback();
-    });
-
-    for (let i = 0; i < 2; i++) {
-        models[names.activity].create({...config}).then((d) => q.push(d));
-    }
-
+function createActivities() {
+    const config = () => {
+        return {
+            name: 'name',
+            from: DateTime.local().toJSDate(),
+            to: DateTime.local().plus({days: 1}).toJSDate(),
+            description: 'NTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3',
+            price: '1231231231',
+            limitations: '18+',
+            photo: 'banner.png',
+        }
+    };
+    return models[names.activity].bulkCreate(Array(1).fill(config()));
 }
 
-function createNewses(d) {
-    const config = {
-        name: 'name',
-        description: 'NTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
-            'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3',
-        photo: 'card_1.png',
-        [keys.departmentId]: d.id,
-    }
+function createNewses() {
+    const config = () => {
+        return {
+            name: 'name',
+            description: 'NTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3,@4,@5,@6,@7);\n' +
+                'Executing (default): INSERT INTO [activities] ([name],[from],[to],[description],[price],[limitations],[photo],[departmentId]) OUTPUT INSERTED.* VALUES (@0,@1,@2,@3',
+            photo: 'card_1.png',
+        }
+    };
 
-    const q = async.queue(function (department, callback) {
-        callback();
-    });
-
-    for (let i = 0; i < 2; i++) {
-        models[names.news].create({...config}).then((d) => q.push(d));
-    }
+    return models[names.news].bulkCreate(Array(3).fill(config()));
 }

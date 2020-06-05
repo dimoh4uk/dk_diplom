@@ -39,11 +39,12 @@ exports.detail = async function (req, res) {
 }
 
 exports.formRequest = async function (req, res) {
-    console.log("asdasdasd")
-    const params = req.params;
-    const backUrl = '/asdasdasasdasd';
-    const excursion = {name: 'сплав на хуй'};
-    const text = `Ваша заявка на экскурсию ${excursion.name} успешно принята`
+    const data = {...req.body, [keys.statusId]: 1};
+    const service = await models[mNames.service].findByPk(data[keys.serviceId]);
+    const backUrl = service.detailLink;
+    const text = `Ваша заявка успешно принята`
+
+    await models[mNames.serviceRequest].create(data);
 
     res.render('thanks-page', {backUrl, text});
 }

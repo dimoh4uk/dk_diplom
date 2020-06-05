@@ -1,0 +1,47 @@
+extends ../layout
+include ../news/mixins/slider-card
+include ../activity/mixins/list-card
+
+block content
+
+  h1= culturalInstitution.name
+  figure
+    img(src=culturalInstitution.photoLink width="460" height="396")
+
+  p= culturalInstitution.description
+
+  p Адрес: #{culturalInstitution.address}
+  p tel: #{culturalInstitution.tel}
+
+
+  .block
+    h2 Отделения:
+    table
+      //большой список отделений может еще инфу какую-то вывести хз
+      each department in departments
+        tr
+          td= department.name
+          td= department.address
+          td
+            a(href=department.detailLink) подробнее
+
+
+  .block
+    h2 activities:
+      //4 карочки без слайдера вряд
+    .columns
+      each activity in activities
+        .column.is-3
+          +listCard(activity)
+
+    a.button(href=allActivitiesHref) Все меропрития центра центра
+
+    .block
+      h2 Новости:
+      //3 карочки без слайдера вряд
+      .columns
+        each item in news
+          .column.is-4
+            +sliderCard(item)
+
+      a.button(href=allNewsHref) Все новости центра

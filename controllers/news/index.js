@@ -23,7 +23,6 @@ exports.detail = async function (req, res) {
 
     res.render('news/detail', {news: news, source: newsSource});
 
-
     function calculateSource(news) {
         const department = {
             key: news[keys.departmentId],

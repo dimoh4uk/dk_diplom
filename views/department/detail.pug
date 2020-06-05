@@ -12,6 +12,6 @@ block content
     p tel: #{department.tel}
 
     ul
-        each document in department.documents
+        each document in documents
             li
                 a(href="file://localhost:3000/files/1/README.md")= document.name

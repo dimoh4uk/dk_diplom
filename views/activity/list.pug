@@ -1,17 +1,6 @@
 extends ../layout
 include ./mixins/list-card
 
-mixin activitCard(model)
-    .posts
-        a(href=model.de).posts__img
-            figure
-                img(src=model.photoLink width="460" height="396")
-        .posts__content
-            .title.is-5
-                a(href="#")= model.name
-            time= model.date
-
-
 block content
     .head
         img.head__img(src="/img/head_1.jpg")

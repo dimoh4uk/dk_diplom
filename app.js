@@ -17,6 +17,7 @@ const departmentRouter = require('./routes/department');
 const excursionRouter = require('./routes/excursion');
 const contactRouter = require('./routes/contacts');
 const serviceRouter = require('./routes/service');
+const culturalInstitutionRouter = require('./routes/culturalInstitution');
 
 
 const app = express();
@@ -54,6 +55,7 @@ app.use(`/${modelName.activity}`, activityRouter);
 app.use(`/${modelName.department}`, departmentRouter);
 app.use(`/${modelName.excursion}`, excursionRouter);
 app.use(`/${modelName.service}`, serviceRouter);
+app.use(`/${modelName.culturalInstitution}`, culturalInstitutionRouter);
 app.use(`/about`, aboutRouter);
 app.use(`/contacts`, contactRouter);
 
