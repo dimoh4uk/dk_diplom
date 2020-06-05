@@ -1,9 +1,21 @@
 mixin listCard(model)
-    .posts
-        a(href=model.detailLink).posts__img
-            figure
-                img(src=model.photoLink width="460" height="396")
-        .posts__content
-            .title.is-5
-                a(href=model.detailLink)= model.name
+    .card.activity
+        a.block-link(href=model.detailLink)
+        .card-image
+            figure.image.is-3by2
+                img(src=model.photoLink)
+        .card-content
+            .activity__title= model.name
             time= model.date
+            .activity__read
+                .activity__dot
+                a(href=model.detailLink).activity__more Читать дальше
+                    span.material-icons arrow_forward
+    //.posts
+    //    a(href=model.detailLink).posts__img
+    //        figure
+    //            img(src=model.photoLink width="460" height="396")
+    //    .posts__content
+    //        .title.is-5
+    //            a(href=model.detailLink)= model.name
+    //        time= model.date

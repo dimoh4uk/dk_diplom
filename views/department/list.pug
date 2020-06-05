@@ -3,7 +3,10 @@ include ./mixins/list-card
 
 
 block content
-        ul
-            each item in departments
-                li
-                    +listCard(item)
+  .head
+    img.head__img(src="/img/head_1.jpg")
+    .container
+      h1.head__title Отделения центра
+  .section
+    each item in departments
+      +listCard(item)

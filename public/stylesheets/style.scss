@@ -1,9 +1,10 @@
 @import "vars";
 @import "../../node_modules/bulma/bulma";
-//@import "../../node_modules/swiper/css/swiper.min.css";
 @import "header";
 @import "posts";
 @import "main-slider";
+@import "activity";
+@import "card";
 @import "form";
 @import "footer";
 
@@ -142,53 +143,11 @@ a {
   z-index: 1;
 }
 
-
-.activity {
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 2px 3px hsla(0,0%,4%,.1), 0 0 0 1px hsla(0,0%,4%,.1);
-  &:hover {
-    .card-content {
-      background: $white-ter;
-    }
-
-    .activity {
-      &__dot:after {
-        font-size: 0;
-      }
-
-      &__more {
-        opacity: 1;
-        margin-right: 0;
-        transition-timing-function: cubic-bezier(.27, 1.81, .45, .47);
-      }
-    }
-  }
-
-  .card-image {
-
-  }
-
-  .card-content {
-    padding-bottom: 35px;
-    transition: background .3s;
-  }
-
-  &__title {
-    font-size: 18px;
-    font-weight: 700;
-    color: black;
-    margin-bottom: 10px;
-
-  }
-
-  &__read {
-    position: absolute;
-    bottom: .625rem;
-    right: 1rem;
-    z-index: 1;
-  }
-
+.card-more {
+  position: absolute;
+  bottom: .625rem;
+  right: 1rem;
+  z-index: 1;
   &__dot {
     display: block;
 
@@ -204,8 +163,7 @@ a {
       transition: .3s ease;
     }
   }
-
-  &__more {
+  &__link {
     color: #172a3b;
     font-weight: 600;
     opacity: 0;
@@ -213,16 +171,13 @@ a {
     transition: .3s;
     text-decoration: underline;
     white-space: nowrap;
-
     &:hover {
       color: $primary;
       text-decoration: none;
-
-      .material-icons {
+      .material-icons{
         color: $primary;
       }
     }
-
     .material-icons {
       transition: color .3s;
       margin-left: 7px;

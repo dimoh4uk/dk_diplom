@@ -1,19 +1,22 @@
 mixin listCard(model)
-    .box
-        .columns
-            .column
-                a(href=model.detailLink).posts__img
-                    figure
-                        img(src=model.photoLink)
-            .column
-                .title.is-5
-                    p
-                        a.title(href=model.detailLink)= model.name
-                    p address: #{model.address}
-                    p tel: #{model.tel}
-
-                    //Ограничить высоту
-                    p.descprition= model.description
-                    p
-                        a.button(href=model.detailLink) Подробнее
-                time= model.date
+  .full-card
+    .columns.is-gapless
+      .column
+        a(href=model.detailLink).full-card__img.image.is-2by1
+          img(src=model.photoLink width='672' height='340')
+      .column
+        .full-card__content
+          .full-card__wrap
+            a.title.is-5.post__title(href=model.detailLink)= model.name
+            .content=model.description
+          .full-card__contact
+            span.material-icons location_on
+            span=model.address
+          .full-card__contact
+            span.material-icons call
+            span=model.tel
+          .card-more
+            .card-more__dot
+            a(href=model.detailLink).card-more__link
+              | Читать дальше
+              span.material-icons arrow_forward
