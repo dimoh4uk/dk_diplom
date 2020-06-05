@@ -45,12 +45,12 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     DepartmentModel.associate = (current, models) => {
-        current.hasMany(models[names.staffer], departmentIdConfig);
         current.hasMany(models[names.document], departmentIdConfig);
+        current.hasMany(models[names.staffer], departmentIdConfig);
         current.hasMany(models[names.service], departmentIdConfig);
         current.hasMany(models[names.activity], departmentIdConfig);
-        current.hasMany(models[names.news], departmentIdConfig);
         current.hasMany(models[names.excursion], departmentIdConfig);
+        current.hasMany(models[names.news], departmentIdConfig);
     };
 
     return DepartmentModel;

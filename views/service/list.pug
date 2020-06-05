@@ -1,5 +1,5 @@
 extends ../layout
-include ./mixins/list-card
+include mixins/services-list-card
 
 
 block content
@@ -7,4 +7,4 @@ block content
         ul
             each item in services
                 li
-                    +listCard(item)
+                    +servicelistCard(item)

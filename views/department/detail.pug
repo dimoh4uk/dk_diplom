@@ -1,17 +1,83 @@
 extends ../layout
+include ../news/mixins/slider-card
+include ../activity/mixins/list-card
+include ../service/mixins/services-list-card
+include ../excursion/mixins/excursion-list-card
 
 block content
-
-    h1= department.name
-    figure
+  .columns.is-multiline
+    .column.is-9
+      h1= department.name
+      figure
         img(src=department.photoLink width="460" height="396")
 
-    p= department.description
+      p= department.description
 
-    p Адрес: #{department.address}
-    p tel: #{department.tel}
-
-    ul
-        each document in documents
+      p Адрес: #{department.address}
+      p tel: #{department.tel}
+      .block
+        h2 Сотрудники
+        ol
+          each staffer in staffers
             li
-                a(href="file://localhost:3000/files/1/README.md")= document.name
+              p Имя: #{staffer.name}
+              p Телефон: #{staffer.tel}
+      .block
+        h2 Прикрепленные файлы
+        ul
+          each document in documents
+            li
+              a(href=document.documentLink target="_blank")= document.name
+      .block
+        h2 Услуги отделения:
+        .ul
+          each service in services
+            .li
+              +servicelistCard(service)
+
+        a.button(href=allServicesHref) Все услуги отделения
+
+
+    .column.is-3
+
+      .block
+        h2 Заведующий отделением
+        p Имя: #{manager.name}
+        p Тел: #{manager.tel}
+
+      .block
+        h2 Культурный центр
+        img(src=culturalInstitution.photoLink)
+        p=culturalInstitution.name
+        a.button(href=culturalInstitution.detailLink) Подробнее
+
+    .column
+      .block
+        h2 Новости отделения:
+        //3 карочки без слайдера вряд
+        .columns
+          each item in news
+            .column.is-4
+              +sliderCard(item)
+
+        a.button(href=allNewsHref) Все новости отделения
+
+      .block
+        h2 Мероприятия отделения:
+          //4 карочки без слайдера вряд
+        .columns
+          each activity in activities
+            .column.is-3
+              +listCard(activity)
+
+        a.button(href=allActivitiesHref) Все меропрития центра отделения
+
+      .block
+        h2 Экскурсии отделения:
+          //4 карочки без слайдера вряд
+        .columns
+          each excursion in excursions
+            .column.is-3
+              +excursionListCard(excursion)
+
+        a.button(href=allExcursionsHref) Все экскурсии центра отделения
