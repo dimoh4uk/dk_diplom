@@ -10,7 +10,7 @@ exports.list = async function (req, res) {
         where: {
             to: {
                 [Op.gt]: DateTime.local().toJSDate(),
-            }
+            },
         },
         order: [
             ['id', 'DESC'],

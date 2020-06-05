@@ -1,5 +1,6 @@
 const names = require('../core/models-names');
 const keys = require('../core/foreign-keys');
+const helpers = require('../core/helpers');
 
 module.exports = (sequelize, DataTypes) => {
     const CulturalInstitutionModel = sequelize.define(names.culturalInstitution, {
@@ -26,6 +27,12 @@ module.exports = (sequelize, DataTypes) => {
         link: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        photoLink: {
+            type: DataTypes.VIRTUAL,
+            get: function () {
+                return helpers.createPhotoLink(this, names.culturalInstitution)
+            }
         },
         detailLink: {
             type: DataTypes.VIRTUAL,

@@ -10,5 +10,5 @@ exports.detail = async function (req, res) {
     const params = req.params;
     const department = await models[mNames.department].findByPk(params.id, {include: models[mNames.document]});
 
-    res.render(`${mNames.department}/detail`, {department: department});
+    res.render(`${mNames.department}/detail`, {department, documents: department.documents});
 }
