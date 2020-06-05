@@ -8,14 +8,37 @@ const keys = require('../core/foreign-keys')
 
 module.exports.initBaseRole = async () => {
     await createStatuses();
+    await userRoles();
     await Promise.all(
         await createCulturalCentres()
             .map(async (c) => {
                 c.setDepartments(await createDepartments());
                 c.setActivities(await createActivities());
                 c.setNews(await createNewses());
+                c.setStaffers(await createUsers());
             })
     );
+}
+
+function userRoles() {
+    return models[names.role].bulkCreate([
+        {name: 'Сотрудник'},
+        {name: 'Заведующий'},
+        {name: 'Директор'},
+    ]);
+}
+
+function createUsers() {
+    const c = {
+        name: 'D.B. Adfgdf',
+        tel: '8 888 88 888',
+        [keys.roleId]: 1,
+    }
+    const users = Array(5).fill(c);
+    const zaved = {...c, [keys.roleId]: 2};
+    const direct = {...c, [keys.roleId]: 3};
+
+    return models[names.staffer].bulkCreate([...users, zaved, direct]);
 }
 
 function createCulturalCentres() {
@@ -27,6 +50,7 @@ function createCulturalCentres() {
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sodales diam venenatis nunc porttitor faucibus. Ut fermentum, neque hendrerit eleifend ornare, arcu est fringilla orci, ornare hendrerit  in quam a arcu porttitor dignissim. Suspendisse pretium, lorem vitae iaculis vulputate, ante lorem accumsan ipsum, ullamcorper molestie ante dui ac metus. In commodo dui at neque posuere finibus. Nulla condimentum tortor vitae rhoncus imperdiet.',
         link: 'asdasdasdas',
     };
+
     return models[names.culturalInstitution]
         .bulkCreate(Array(3).fill(c))
 }
@@ -95,6 +119,7 @@ function createDepartments() {
                 department.setServices(await createServices()),
                 department.setActivities(await createActivities()),
                 department.setNews(await createNewses()),
+                department.setStaffers(await createUsers()),
             ]);
             return department;
         })

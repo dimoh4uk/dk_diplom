@@ -50,6 +50,7 @@ module.exports = (sequelize, DataTypes) => {
 
     CulturalInstitutionModel.associate = (current, models) => {
         current.hasMany(models[names.department], culturalInstitutionIdConfig);
+        current.hasMany(models[names.staffer], culturalInstitutionIdConfig);
         current.hasMany(models[names.activity], culturalInstitutionIdConfig);
         current.hasMany(models[names.news], culturalInstitutionIdConfig);
     };

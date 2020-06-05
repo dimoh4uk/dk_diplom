@@ -34,6 +34,12 @@ exports.detail = async function (req, res) {
                 ]
             },
         );
+    const director = await models[mNames.staffer].findOne({
+        where: {
+            [keys.roleId]: 3,
+            [keys.culturalInstitutionId]: params.id
+        },
+    });
 
     const departments = culturalInstitution.departments;
     const activities = culturalInstitution.activities;
@@ -48,6 +54,7 @@ exports.detail = async function (req, res) {
             culturalInstitution,
             departments,
             activities,
+            director,
             news,
         }
     );
@@ -63,7 +70,6 @@ exports.part = async function (req, res) {
     const targetField = calcName();
     const list = await load();
 
-    console.log('targetField=>', targetField, modelName);
     res.render(
         `${modelName}/list`, {[targetField]: list}
     );
