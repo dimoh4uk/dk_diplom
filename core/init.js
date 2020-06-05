@@ -147,7 +147,7 @@ function createActivities() {
             photo: 'banner.png',
         }
     };
-    return models[names.activity].bulkCreate(Array(1).fill(config()));
+    return models[names.activity].bulkCreate(Array(4).fill(config()));
 }
 
 function createNewses() {

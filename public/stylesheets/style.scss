@@ -148,6 +148,7 @@ a {
   bottom: .625rem;
   right: 1rem;
   z-index: 1;
+
   &__dot {
     display: block;
 
@@ -163,6 +164,7 @@ a {
       transition: .3s ease;
     }
   }
+
   &__link {
     color: #172a3b;
     font-weight: 600;
@@ -171,13 +173,16 @@ a {
     transition: .3s;
     text-decoration: underline;
     white-space: nowrap;
+
     &:hover {
       color: $primary;
       text-decoration: none;
-      .material-icons{
+
+      .material-icons {
         color: $primary;
       }
     }
+
     .material-icons {
       transition: color .3s;
       margin-left: 7px;
@@ -185,4 +190,8 @@ a {
       font-size: 17px;
     }
   }
+}
+
+.page-content {
+
 }

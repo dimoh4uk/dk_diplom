@@ -10,10 +10,8 @@
     }
 
     .card-more {
-      &__dot {
-        &:after {
-          font-size: 0;
-        }
+      &__dot:after {
+        font-size: 0;
       }
 
       &__link {
@@ -103,5 +101,42 @@
     &__link {
       margin-right: 30vw;
     }
+  }
+}
+
+.small-card {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 3px hsla(0,0%,4%,.1), 0 0 0 1px hsla(0,0%,4%,.1);
+  &:hover {
+    .card-content {
+      background: $white-ter;
+    }
+    .card-more {
+      &__dot:after {
+        font-size: 0;
+      }
+
+      &__link {
+        opacity: 1;
+        margin-right: 0;
+        transition-timing-function: cubic-bezier(0.27, 1.81, 0.45, 0.47);
+      }
+    }
+  }
+  .card-image{
+    img{
+      object-fit: cover;
+    }
+  }
+  .card-content {
+    padding-bottom: 35px;
+    transition: background .3s;
+  }
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 10px;
   }
 }

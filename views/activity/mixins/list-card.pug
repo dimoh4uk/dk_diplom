@@ -1,14 +1,14 @@
-mixin listCard(activity)
-  .card.activity
-    a.block-link(href=activity.detailLink)
+mixin listCard(model)
+  .card.small-card
+    a.block-link(href=model.detailLink)
     .card-image
       figure.image.is-3by2
-        img(src=activity.photoLink)
+        img(src=model.photoLink)
     .card-content
-      .activity__title= activity.name
-      time= activity.date
-      p Ограничение: #{activity.limitations}
-      .activity__read
-        .activity__dot
-        a(href=activity.detailLink).activity__more Читать дальше
+      .small-card__title= model.name
+      time= model.date
+      p Ограничение: #{model.limitations}
+      .card-more
+        .card-more__dot
+        a(href=model.detailLink).card-more__link Читать дальше
           span.material-icons arrow_forward

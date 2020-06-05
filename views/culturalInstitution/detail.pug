@@ -3,33 +3,38 @@ include ../news/mixins/slider-card
 include ../activity/mixins/list-card
 
 block content
+  .head
+    img.head__img(src="/img/head_1.jpg")
+    .container
+      h1.head__title= culturalInstitution.name
+  .section.page-content
+    .columns
+      .column.is-9-desktop
+        .box
+          .content
+            h1= culturalInstitution.name
+            figure
+              img(src=culturalInstitution.photoLink)
+            p= culturalInstitution.description
 
-  h1= culturalInstitution.name
-  figure
-    img(src=culturalInstitution.photoLink width="460" height="396")
-
-  p= culturalInstitution.description
-
-  p Адрес: #{culturalInstitution.address}
-  p tel: #{culturalInstitution.tel}
-
-
-  .block
-    h2 Директор
-    p Имя #{director.name}
-    p Телефон #{director.tel}
-
-  .block
-    h2 Отделения:
-    table
-      //большой список отделений может еще инфу какую-то вывести хз
-      each department in departments
-        tr
-          td= department.name
-          td= department.address
-          td
-            a(href=department.detailLink) подробнее
-
+            p Адрес: #{culturalInstitution.address}
+            p tel: #{culturalInstitution.tel}
+            .block
+              h2 Отделения:
+              table
+                //большой список отделений может еще инфу какую-то вывести хз
+                each department in departments
+                  tr
+                    td= department.name
+                    td= department.address
+                    td
+                      a(href=department.detailLink) подробнее
+      .column
+        .box
+          .block
+            h2 Директор
+            p Имя #{director.name}
+            p Телефон #{director.tel}
 
   .block
     h2 activities:

@@ -7,7 +7,7 @@ mixin listCard(model)
       .column
         .full-card__content
           .full-card__wrap
-            a.title.is-5.post__title(href=model.detailLink)= model.name
+            a.title.is-5(href=model.detailLink)= model.name
             .content=model.description
           .full-card__contact
             span.material-icons location_on
