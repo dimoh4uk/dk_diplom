@@ -1,24 +1,36 @@
 extends ../layout
 
 block content
-    .columns
-        .column
-            h1=excursion.name
-            img(src=excursion.photoLink)
-            p Время проведения: #{excursion.date}
-            p Цена: #{excursion.price}
-            p ограничения: #{excursion.limitations}
-            p Организатор
-                a(href=department.detailLink)=department.name
+  .columns
+    .column
+      h1=excursion.name
+      img(src=excursion.photoLink)
+      p Время проведения: #{excursion.date}
+      p Цена: #{excursion.price}
+      p ограничения: #{excursion.limitations}
+      p Организатор
+        a(href=department.detailLink)=department.name
 
-            p=excursion.description
+      p=excursion.description
 
-
-            .form
-                form(action='/excursion/request' method='POST')
-                    input(name='excursionId' class='is-hide' value=excursionId)
-                    input(name="clientName")
-                    input(name="tel")
-                    input(name="email")
-                    textarea(name="message")
-                    button(type='submit') Отправить
+      form.main-form(action='/excursion/request' method='POST')
+        input(name='excursionId' class='is-hidden' value=excursionId)
+        .columns.is-multiline
+          .column.is-6
+            .field
+              .control
+                input.input(type="text" placeholder="Ваше имя" name="clientName" required)
+          .column.is-6
+            .field
+              .control
+                input.input(type="phone" placeholder="Телефон" name="tel" required)
+          .column.is-12
+            .field
+              .control
+                textarea.textarea(rows="4" placeholder="Ваше сообщение" name="message")
+          .column.is-6
+            .field
+              .control
+                input.input(type="email" placeholder="E-mail" name="email"  required)
+          .column.is-6
+            button.button.is-primary.is-fullwidth(type="submit") Отправить сообщение

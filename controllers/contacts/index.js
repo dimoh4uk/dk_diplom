@@ -7,10 +7,11 @@ exports.index = async function (req, res) {
 };
 
 exports.formRequest = async function (req, res) {
-    console.log("asdasdasd")
-    const params = req.params;
-    const backUrl = '/asdasdasasdasd';
-    const text = `Ваша заявка успешно принята`
+    const data = {...req.body, [keys.statusId]: 1};
+    const backUrl = '/contacts';
+    const text = `Ваша заявка успешно принята`;
+
+    await models[mNames.feedback].create(data);
 
     res.render('thanks-page', {backUrl, text});
 }

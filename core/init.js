@@ -7,6 +7,7 @@ const keys = require('../core/foreign-keys')
 
 
 module.exports.initBaseRole = async () => {
+    await createStatuses();
     await Promise.all(
         await createCulturalCentres()
             .map(async (c) => {
@@ -28,6 +29,13 @@ function createCulturalCentres() {
     };
     return models[names.culturalInstitution]
         .bulkCreate(Array(3).fill(c))
+}
+
+function createStatuses() {
+    return models[names.requestStatus].bulkCreate([
+        {name: 'opened'},
+        {name: 'closed'},
+    ]);
 }
 
 function createFiles() {
