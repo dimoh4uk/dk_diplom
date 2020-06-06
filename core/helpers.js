@@ -15,6 +15,19 @@ exports.toDateFormat = function (dateTime, date) {
         .toFormat("dd MMMM 'at' HH':'mm");
 }
 
+exports.flatten = function (array) {
+    console.log('ipet array', array);
+    return array.reduce((buffer, current) => {
+        if (Array.isArray(current)) {
+            buffer.push(...current);
+        } else {
+            buffer.push(current);
+        }
+
+        return buffer;
+    }, [])
+}
+
 exports.loadSource = function (model, sources) {
 //TODO calculateSource here
 }

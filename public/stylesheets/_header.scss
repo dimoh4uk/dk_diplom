@@ -81,4 +81,9 @@
       }
     }
   }
+
+  &__search {
+    z-index: 31;
+    position: relative;
+  }
 }

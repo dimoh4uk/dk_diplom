@@ -16,6 +16,7 @@ const aboutRouter = require('./routes/about');
 const departmentRouter = require('./routes/department');
 const excursionRouter = require('./routes/excursion');
 const contactRouter = require('./routes/contacts');
+const searchRouter = require('./routes/search');
 const serviceRouter = require('./routes/service');
 const culturalInstitutionRouter = require('./routes/culturalInstitution');
 
@@ -58,6 +59,7 @@ app.use(`/${modelName.service}`, serviceRouter);
 app.use(`/${modelName.culturalInstitution}`, culturalInstitutionRouter);
 app.use(`/about`, aboutRouter);
 app.use(`/contacts`, contactRouter);
+app.use(`/search`, searchRouter);
 
 
 // catch 404 and forward to error handler

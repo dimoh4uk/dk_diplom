@@ -64,6 +64,7 @@ function createStatuses() {
 
 function createFiles() {
     const c = {name: 'filename', link: 'README.md'};
+
     return models[names.document]
         .bulkCreate(Array(3).fill(c));
 }
