@@ -34,6 +34,7 @@ a {
   border-bottom: 1px solid #ebebeb;
   margin-bottom: 50px;
   align-items: flex-end;
+
   .title {
     color: black;
     font-weight: 400;
@@ -43,7 +44,8 @@ a {
   &__link {
     color: #8e8e8e;
     transition: .25s;
-    &:hover{
+
+    &:hover {
       color: $primary;
     }
   }
@@ -271,5 +273,39 @@ a {
 .page-content {
   &__box {
     padding: 25px 50px;
+    .content{
+      figure{
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.list-file {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  li {
+    margin-bottom: 10px;
+    &:not(:last-child){
+      margin-right: 10px;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      padding: 3px 12px;
+      background: $white-ter;
+      color: #848484;
+      transition: color .25s, background .25s ;
+
+      &:hover {
+        color: $white;
+        background: $primary;
+      } .material-icons {
+          font-size: 18px;
+          margin-right: 5px;
+        }
+    }
   }
 }
