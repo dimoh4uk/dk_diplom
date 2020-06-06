@@ -1,5 +1,11 @@
 mixin servicelistCard(model)
-    a(href=model.detailLink)= model.name
-    p price: #{model.price}
-    p description: #{model.description}
-    a(href=model.detailLink) подробнее
+  .card
+    .card-header
+      a(href=model.detailLink).card-header-title=model.name
+    .card-content
+      .content
+        p=model.description
+        .proce=model.price
+
+    .card-footer
+      a.card-footer-item(href=model.detailLink) подробнее

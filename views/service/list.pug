@@ -3,8 +3,7 @@ include mixins/services-list-card
 
 
 block content
-        // я хз как красивовыводить у них нет фото, может просто тобличку
-        ul
-            each item in services
-                li
-                    +servicelistCard(item)
+  .columns.is-multiline
+    each item in services
+      .column.is-4
+        +servicelistCard(item)
