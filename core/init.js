@@ -78,7 +78,7 @@ function createServices() {
     };
 
     return models[names.service]
-        .bulkCreate(Array(1).fill(config()));
+        .bulkCreate(Array(4).fill(config()));
 }
 
 function createExcursions() {
@@ -95,7 +95,7 @@ function createExcursions() {
     };
 
     return models[names.excursion]
-        .bulkCreate(Array(1).fill(config()));
+        .bulkCreate(Array(4).fill(config()));
 }
 
 function createDepartments() {

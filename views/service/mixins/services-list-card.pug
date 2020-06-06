@@ -1,0 +1,11 @@
+mixin servicelistCard(model)
+  .card
+    .card-header
+      a(href=model.detailLink).card-header-title=model.name
+    .card-content
+      .content
+        p=model.description
+        .proce=model.price
+
+    .card-footer
+      a.card-footer-item(href=model.detailLink) подробнее

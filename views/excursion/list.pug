@@ -1,5 +1,5 @@
 extends ../layout
-include ./mixins/list-card
+include ./mixins/excursion-list-card
 
 
 block content
@@ -11,4 +11,4 @@ block content
     .columns.is-multiline
       each item in excursions
         .column.is-3-widescreen.is-4-desktop
-          +listCard(item)
+          +excursionListCard(item)

@@ -1,15 +1,19 @@
 extends ../layout
 
 block content
-    .columns
-        .column.is-10
-            h1= activity.name
-            figure
-                img(src=activity.photoLink width="460" height="396")
-            time= activity.date
-            p= 'ограничения'
-            p= activity.description
+  .columns
+    .column.is-10
+      h1= activity.name
+      figure
+        img(src=activity.photoLink width="460" height="396")
+      time= activity.date
+      p Ограницения #{activity.limitations}
+      p Цена #{activity.price}
+      p= activity.description
 
-        .column.is-2
-            h2= source.name
-            a(href=source.detailLink) Подробнее
+    .column.is-2
+      h2 Проводит
+      .block
+        img(src=source.photoLink)
+        p=source.name
+        a(href=source.detailLink) Подробнее
