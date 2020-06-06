@@ -20,12 +20,38 @@ a {
 
 .section-title {
   color: black;
-  font-weight: 900;
+  font-weight: 400;
   padding-bottom: 15px;
   border-bottom: 1px solid #ebebeb;
 
   &.title {
     margin-bottom: 50px;
+  }
+}
+
+.section-head {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ebebeb;
+  margin-bottom: 50px;
+  align-items: flex-end;
+  .title {
+    color: black;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+
+  &__link {
+    color: #8e8e8e;
+    transition: .25s;
+    &:hover{
+      color: $primary;
+    }
+  }
+}
+
+.section {
+  & + .section {
+    padding-top: 0;
   }
 }
 
@@ -62,6 +88,9 @@ a {
     text-align: center;
     font-weight: 700;
     text-transform: uppercase;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
 
@@ -192,6 +221,55 @@ a {
   }
 }
 
-.page-content {
+.contact-item {
+  display: flex;
 
+  & + .contact-item {
+    margin-top: 10px;
+  }
+
+  .material-icons {
+    margin-right: 10px;
+  }
+}
+
+.card-director {
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: $grey-lightest;
+
+    .material-icons {
+      display: block;
+      font-size: 40px;
+      color: $primary;
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+  }
+
+  &__name {
+    color: black;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+
+  .contact-item {
+    .material-icons {
+      font-size: 20px;
+      margin-right: 7px;
+    }
+  }
+}
+
+.page-content {
+  &__box {
+    padding: 25px 50px;
+  }
 }

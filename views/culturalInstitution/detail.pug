@@ -9,49 +9,65 @@ block content
       h1.head__title= culturalInstitution.name
   .section.page-content
     .columns
-      .column.is-9-desktop
-        .box
+      .column.is-8-desktop.is-9-fullhd
+        .box.page-content__box
           .content
-            h1= culturalInstitution.name
             figure
               img(src=culturalInstitution.photoLink)
+            h1= culturalInstitution.name
             p= culturalInstitution.description
-
-            p Адрес: #{culturalInstitution.address}
-            p tel: #{culturalInstitution.tel}
-            .block
-              h2 Отделения:
-              table
-                //большой список отделений может еще инфу какую-то вывести хз
-                each department in departments
-                  tr
-                    td= department.name
-                    td= department.address
-                    td
-                      a(href=department.detailLink) подробнее
+        .box.page-content__box
+            .title.is-4 Отделения:
+            table.table
+              each department in departments
+                tr
+                  td(style="width: 50%;")= department.name
+                  td= department.address
+                  td
+                    a(href=department.detailLink).button.is-primary.is-fullwidth подробнее
       .column
+        .box.card-director
+          .media
+            .media-left
+              .card-director__icon
+                span.material-icons person
+            .media-content
+              .card-director__text Директор
+              .card-director__name=director.name
+              .contact-item
+                span.material-icons phone
+                span= director.tel
         .box
-          .block
-            h2 Директор
-            p Имя #{director.name}
-            p Телефон #{director.tel}
+          .title.is-5 Контакты культурного центра
+          .contact-item
+            span.material-icons phone
+            span= culturalInstitution.tel
+          .contact-item
+            span.material-icons location_on
+            span= culturalInstitution.address
 
-  .block
-    h2 activities:
-      //4 карочки без слайдера вряд
+
+  .section
+    .level.section-head
+      .level-left
+        .level-item
+          .title.is-2 Мероприятия:
+      .level-right
+        .level-item
+          a(href=allActivitiesHref).section-head__link Все меропрития центра
     .columns
       each activity in activities
         .column.is-3
           +listCard(activity)
-
-    a.button(href=allActivitiesHref) Все меропрития центра центра
-
-    .block
-      h2 Новости:
-      //3 карочки без слайдера вряд
-      .columns
-        each item in news
-          .column.is-4
-            +sliderCard(item)
-
-      a.button(href=allNewsHref) Все новости центра
+  .section
+    .level.section-head
+      .level-left
+        .level-item
+          .title.is-2 Новости:
+      .level-right
+        .level-item
+          a(href=allNewsHref).section-head__link Все новости центра
+    .columns
+      each item in news
+        .column.is-4
+          +sliderCard(item)
