@@ -1,5 +1,6 @@
 .full-card {
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+
   &:hover {
     .full-card {
       &__img {
@@ -40,6 +41,7 @@
     overflow: hidden;
     height: 100%;
     background: $grey-lightest;
+
     img {
       transform: scale(1) translateX(0) translateY(0);
       transition: all .8s ease;
@@ -107,11 +109,13 @@
 .small-card {
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 3px hsla(0,0%,4%,.1), 0 0 0 1px hsla(0,0%,4%,.1);
+  box-shadow: 0 2px 3px hsla(0, 0%, 4%, .1), 0 0 0 1px hsla(0, 0%, 4%, .1);
+
   &:hover {
     .card-content {
       background: $white-ter;
     }
+
     .card-more {
       &__dot:after {
         font-size: 0;
@@ -124,19 +128,70 @@
       }
     }
   }
-  .card-image{
-    img{
+
+  .card-image {
+    img {
       object-fit: cover;
     }
   }
+
   .card-content {
     padding-bottom: 35px;
     transition: background .3s;
   }
+
   &__title {
     font-size: 18px;
     font-weight: 700;
     color: black;
     margin-bottom: 10px;
+  }
+}
+
+.card-service {
+  height: 100%;
+
+  &.card {
+    .card-header {
+      text-align: center;
+      .card-header-title {
+        justify-content: center;
+        font-family: $title-family;
+      }
+    }
+
+    .card-content {
+      text-align: center;
+
+      p {
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+
+    .card-footer {
+      .card-footer-item {
+        justify-content: center;
+        color: $white;
+        background: $primary;
+        transition: color .25s, background .4s;
+        font-weight: 600;
+
+        &:hover {
+          color: black;
+          background: $white;
+        }
+      }
+    }
+  }
+
+  &__price {
+    color: black;
+    span:first-child{
+      margin-right: 5px;
+      font-weight: 600;
+    }
   }
 }

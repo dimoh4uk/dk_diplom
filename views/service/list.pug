@@ -3,7 +3,12 @@ include mixins/services-list-card
 
 
 block content
-  .columns.is-multiline
-    each item in services
-      .column.is-4
-        +servicelistCard(item)
+  .head
+    img.head__img(src="/img/head_1.jpg")
+    .container
+      h1.head__title Платные услуги
+  .section
+    .columns.is-multiline
+      each item in services
+        .column.is-4
+          +servicelistCard(item)

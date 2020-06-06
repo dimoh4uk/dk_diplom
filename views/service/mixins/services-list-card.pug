@@ -1,11 +1,12 @@
 mixin servicelistCard(model)
-  .card
+  .card.card-service
     .card-header
       a(href=model.detailLink).card-header-title=model.name
     .card-content
       .content
         p=model.description
-        .proce=model.price
-
+      .card-service__price
+        span Цена:
+        span #{model.price} &#8381;
     .card-footer
       a.card-footer-item(href=model.detailLink) подробнее
