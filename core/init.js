@@ -7,18 +7,44 @@ const keys = require('../core/foreign-keys')
 
 
 module.exports.initBaseRole = async () => {
-    await createStatuses();
-    await userRoles();
-    await tourObject();
-    await Promise.all(
-        await createCulturalCentres()
-            .map(async (c) => {
-                c.setDepartments(await createDepartments());
-                c.setActivities(await createActivities());
-                c.setNews(await createNewses());
-                c.setStaffers(await createUsers());
-            })
-    );
+    // const d = await models[names.department].findByPk(1);
+
+    // d.setDocuments(await cDocuments());
+
+
+    // await createStatuses();
+    // await userRoles();
+    // await tourObject();
+    // await Promise.all(
+    //     await createCulturalCentres()
+    //         .map(async (c) => {
+    //             c.setDepartments(await createDepartments());
+    //             c.setActivities(await createActivities());
+    //             c.setNews(await createNewses());
+    //             c.setStaffers(await createUsers());
+    //         })
+    // );
+}
+
+function cDocuments() {
+    const list = [
+        'Муниципальное задание.docx',
+        'ПЕРЕЧЕНЬ МУ.docx',
+        'платные услуги.docx',
+        'распоряжение о назначении.GIF',
+        'Реквизиты ММБУК.docx',
+        'свидетельство инн.GIF',
+        'свидетельство ОГРН.GIF',
+        'Структура ММБУК.docx',
+        'Устав муниципального образования Гайнский муниципальный район.docx',
+    ].map((link) => {
+        const [name] = link.split('.');
+        return {name, link};
+    })
+
+    return models[names.document].bulkCreate(list);
+
+
 }
 
 function tourObject() {
