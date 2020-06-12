@@ -1,5 +1,9 @@
 extends layout
 
 block content
-    h1=text
-    a.button(href=backUrl) Назад
+  .section
+    .columns.is-centered
+      .column.is-6
+        .has-text-centered
+          .title.is-2=text
+          a.button.is-primary(href=backUrl) Назад
