@@ -150,10 +150,13 @@
 
 .card-service {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 
   &.card {
     .card-header {
       text-align: center;
+
       .card-header-title {
         justify-content: center;
         font-family: $title-family;
@@ -162,6 +165,7 @@
 
     .card-content {
       text-align: center;
+      flex-grow: 1;
 
       p {
         display: -webkit-box;
@@ -189,7 +193,8 @@
 
   &__price {
     color: black;
-    span:first-child{
+
+    span:first-child {
       margin-right: 5px;
       font-weight: 600;
     }

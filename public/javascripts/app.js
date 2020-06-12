@@ -9,6 +9,17 @@ var mySwiper = new Swiper('#posts', {
     },
 });
 
+const swiperList = document.querySelectorAll('#swiper-list');
+for(let item of swiperList){
+  let swiper = new Swiper(item.querySelector('.swiper-container'), {
+    navigation: {
+      nextEl: item.querySelector('.swiper-button-next'),
+      prevEl: item.querySelector('.swiper-button-prev'),
+    },
+  });
+}
+
+
 const searchInput = document.getElementById('site_search');
 
 searchInput && searchController(searchInput);
