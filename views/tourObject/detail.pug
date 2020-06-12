@@ -1,0 +1,18 @@
+extends ../layout
+include ../news/mixins/slider-card
+include ../activity/mixins/list-card
+
+block content
+  .head
+    img.head__img(src="/img/head_1.jpg")
+    .container
+      h1.head__title= tourObject.name
+  .section.page-content
+    .columns
+      .column
+        .box.page-content__box
+          .content
+            figure
+              img(src=tourObject.photoLink)
+            h1= tourObject.name
+            p= tourObject.description

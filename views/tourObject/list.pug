@@ -1,0 +1,12 @@
+extends ../layout
+include ./mixins/list-card
+
+
+block content
+  .head
+    img.head__img(src="/img/head_1.jpg")
+    .container
+      h1.head__title Туристические объекты
+  .section
+    each item in tourObjects
+      +listCard(item)

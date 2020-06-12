@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         detailLink: {
             type: DataTypes.VIRTUAL,
             get: function () {
-                return `/districtCulture/${names.tourObject}/${this.id}`
+                return `/${names.tourObject}/${this.id}`
             }
         }
     }, {

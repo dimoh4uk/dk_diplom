@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         }
     }, {
-        updatedAt: false
+        timestamps: false,
     });
 
     const excursionIdConfig = {
