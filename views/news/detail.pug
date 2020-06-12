@@ -1,14 +1,20 @@
 extends ../layout
 
 block content
-    .columns
-        .column.is-10
+  .head
+    img.head__img(src="/img/head_1.jpg")
+    .container
+      h1.head__title= news.name
+  .section.page-content
+    .columns.is-multiline
+      .column.is-9
+        .box.page-content__box
+          .content
+            img(src=news.photoLink)
             h1= news.name
-            figure
-                img(src=news.photoLink width="460" height="396")
-            time= news.date
             p= news.description
-
-        .column.is-2
-            h2= source.name
-            a(href=source.detailLink) Подробнее
+            time= news.date
+      .column
+        .box
+          .title.is-5 Источник
+          a(href=source.detailLink)= source.name

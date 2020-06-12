@@ -1,36 +1,47 @@
 extends ../layout
 
 block content
-  .columns
-    .column.is-10
-      h1= service.name
-      img(src=service.photoLink)
-      time= service.date
-      p= service.description
+  .head
+    img.head__img(src="/img/head_1.jpg")
+    .container
+      h1.head__title= service.name
+  .section.page-content
+    .columns.is-multiline
+      .column.is-9
+        .box.page-content__box
+          .content
+            img(src=service.photoLink)
+            h1= service.name
+            time= service.date
+            p= service.description
+        .section
+          .contact-box
+            .title.is-2 Оставьте заявку #[br] на экскурсию
+            form.main-form(action='/service/request' method='POST')
+              input(name='serviceId' class='is-hidden' value=service.id)
+              .columns.is-multiline
+                .column.is-6
+                  .field
+                    .control
+                      input.input(type="text" placeholder="Ваше имя" name="clientName" required)
+                .column.is-6
+                  .field
+                    .control
+                      input.input(type="phone" placeholder="Телефон" name="tel" required)
+                .column.is-12
+                  .field
+                    .control
+                      textarea.textarea(rows="4" placeholder="Ваше сообщение" name="message")
+                .column.is-6
+                  .field
+                    .control
+                      input.input(type="email" placeholder="E-mail" name="email"  required)
+                .column.is-6
+                  button.button.is-primary.is-fullwidth(type="submit") Отправить сообщение
 
-      form.main-form(action='/service/request' method='POST')
-        input(name='serviceId' class='is-hidden' value=service.id)
-        .columns.is-multiline
-          .column.is-6
-            .field
-              .control
-                input.input(type="text" placeholder="Ваше имя" name="clientName" required)
-          .column.is-6
-            .field
-              .control
-                input.input(type="phone" placeholder="Телефон" name="tel" required)
-          .column.is-12
-            .field
-              .control
-                textarea.textarea(rows="4" placeholder="Ваше сообщение" name="message")
-          .column.is-6
-            .field
-              .control
-                input.input(type="email" placeholder="E-mail" name="email"  required)
-          .column.is-6
-            button.button.is-primary.is-fullwidth(type="submit") Отправить сообщение
 
-
-    .column.is-2
-      h2= source.name
-      a(href=source.detailLink) Подробнее
+      .column
+        .box
+          .title.is-5 Исполнитель
+          .content
+            a(href=source.detailLink)= source.name

@@ -1,36 +1,46 @@
 extends ../layout
 
 block content
-  .columns
-    .column
-      h1=excursion.name
-      img(src=excursion.photoLink)
-      p Время проведения: #{excursion.date}
-      p Цена: #{excursion.price}
-      p ограничения: #{excursion.limitations}
-      p Организатор
-        a(href=department.detailLink)=department.name
-
-      p=excursion.description
-
-      form.main-form(action='/excursion/request' method='POST')
-        input(name='excursionId' class='is-hidden' value=excursionId)
-        .columns.is-multiline
-          .column.is-6
-            .field
-              .control
-                input.input(type="text" placeholder="Ваше имя" name="clientName" required)
-          .column.is-6
-            .field
-              .control
-                input.input(type="phone" placeholder="Телефон" name="tel" required)
-          .column.is-12
-            .field
-              .control
-                textarea.textarea(rows="4" placeholder="Ваше сообщение" name="message")
-          .column.is-6
-            .field
-              .control
-                input.input(type="email" placeholder="E-mail" name="email"  required)
-          .column.is-6
-            button.button.is-primary.is-fullwidth(type="submit") Отправить сообщение
+  .head
+    img.head__img(src="/img/head_1.jpg")
+    .container
+      h1.head__title= excursion.name
+  .section.page-content
+    .columns.is-multiline
+      .column.is-9
+        .box.page-content__box
+          .content
+            img(src=excursion.photoLink)
+            h1=excursion.name
+            p=excursion.description
+          div #[b Время проведения:] #{excursion.date}
+          div #[b Цена:] #{excursion.price}
+          div #[b Ограничения:] #{excursion.limitations}
+        .section
+          .contact-box
+            .title.is-2 Оставьте заявку #[br] на экскурсию
+            form.main-form(action='/excursion/request' method='POST')
+              input(name='excursionId' class='is-hidden' value=excursionId)
+              .columns.is-multiline
+                .column.is-6
+                  .field
+                    .control
+                      input.input(type="text" placeholder="Ваше имя" name="clientName" required)
+                .column.is-6
+                  .field
+                    .control
+                      input.input(type="phone" placeholder="Телефон" name="tel" required)
+                .column.is-12
+                  .field
+                    .control
+                      textarea.textarea(rows="4" placeholder="Ваше сообщение" name="message")
+                .column.is-6
+                  .field
+                    .control
+                      input.input(type="email" placeholder="E-mail" name="email"  required)
+                .column.is-6
+                  button.button.is-primary.is-fullwidth(type="submit") Отправить сообщение
+      .column
+        .box
+          .title.is-5 Организатор
+          a(href=department.detailLink)=department.name
