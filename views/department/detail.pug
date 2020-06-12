@@ -39,17 +39,18 @@ block content
                 td= staffer.tel
 
       .column
-        .box.card-director
-          .media
-            .media-left
-              .card-director__icon
-                span.material-icons person
-            .media-content
-              .card-director__text Заведующий отделением
-              .card-director__name=manager.name
-              .contact-item
-                span.material-icons phone
-                span= manager.tel
+        if manager
+          .box.card-director
+            .media
+              .media-left
+                .card-director__icon
+                  span.material-icons person
+              .media-content
+                .card-director__text Заведующий отделением
+                .card-director__name=manager.name
+                .contact-item
+                  span.material-icons phone
+                  span= manager.tel
         .box
           .title.is-5 Контакты отделения центра
           .contact-item
@@ -86,7 +87,7 @@ block content
           .title.is-2 Мероприятия отделения:
       .level-right
         .level-item
-          a(href=allServicesHref).section-head__link Смотреть все
+          a(href=allActivitiesHref).section-head__link Смотреть все
     .columns
       each activity in activities
         .column.is-3
@@ -98,7 +99,7 @@ block content
           .title.is-2 Экскурсии отделения:
       .level-right
         .level-item
-          a(href=allServicesHref).section-head__link Смотреть все
+          a(href=allExcursionsHref).section-head__link Смотреть все
     .columns
       each excursion in excursions
         .column.is-3

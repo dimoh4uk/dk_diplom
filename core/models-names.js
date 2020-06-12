@@ -12,5 +12,6 @@ module.exports = {
     service: 'service',
     serviceRequest: 'serviceRequest',
     staffer: 'staffer',
+    culturalObject: 'culturalObject',
     activity: 'activity',
 }

@@ -2,7 +2,7 @@ const names = require('../core/models-names');
 const helpers = require('../core/helpers');
 
 module.exports = (sequelize, DataTypes) => {
-    const TourObject = sequelize.define(names.tourObject, {
+    const CulturalObject = sequelize.define(names.culturalObject, {
         name: {
             type: DataTypes.STRING,
             allowNull: false
@@ -22,18 +22,18 @@ module.exports = (sequelize, DataTypes) => {
         photoLink: {
             type: DataTypes.VIRTUAL,
             get: function () {
-                return helpers.createPhotoLink(this, names.tourObject,'picture')
+                return helpers.createPhotoLink(this, names.culturalObject, 'picture')
             }
         },
         detailLink: {
             type: DataTypes.VIRTUAL,
             get: function () {
-                return `/districtCulture/${names.tourObject}/${this.id}`
+                return `/districtCulture/${names.culturalObject}/${this.id}`
             }
         }
     }, {
         timestamps: false
     });
 
-    return TourObject;
+    return CulturalObject;
 };

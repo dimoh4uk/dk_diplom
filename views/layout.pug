@@ -9,47 +9,49 @@ html
     link(rel='stylesheet' href='https://unpkg.com/swiper/css/swiper.min.css')
     script(src='https://unpkg.com/swiper/js/swiper.min.js')
   body
-    header.header
-      .container
-        .header__top
-          a.navbar-burger.burger(role='button' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample')
-            span(aria-hidden='true')
-            span(aria-hidden='true')
-            span(aria-hidden='true')
-          a(href="/")
-            img(src='/img/logo_2.png' width='150' height='84')
-          a(href='/')
-            img(src='/img/logo_1.png' width='400' height='100')
-          .has-text-right
-            a(href="#").header__phone
-              span.icon
-                span.material-icons call
-              span 1-255-4464645
-            .header__search
-              .dropdown.is-right
-                .dropdown-trigger
-                  .control
-                    input.input(type="text" placeholder="Поиск по сайту " id='site_search' autocomplete='off')
-                .dropdown-menu
-                  .dropdown-content
+    .site-body
+      header.header
+        .container
+          .header__top
+            a.navbar-burger.burger(role='button' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample')
+              span(aria-hidden='true')
+              span(aria-hidden='true')
+              span(aria-hidden='true')
+            a(href="/")
+              img(src='/img/logo_2.png' width='150' height='84')
+            a(href='/')
+              img(src='/img/logo_1.png' width='400' height='100')
+            .has-text-right
+              a(href="#").header__phone
+                span.icon
+                  span.material-icons call
+                span 1-255-4464645
+              .header__search
+                .dropdown.is-right
+                  .dropdown-trigger
+                    .control
+                      input.input(type="text" placeholder="Поиск по сайту " id='site_search' autocomplete='off')
+                  .dropdown-menu
+                    .dropdown-content
 
-        .header__menu.navbar
-          .navbar-menu
-            a(href='/').navbar-item Главная
-            a(href='/about').navbar-item О нас
-            a(href='/department').navbar-item Отделения центра
-            .navbar-item.has-dropdown.is-hoverable
-              a.navbar-link Услуги
-              .navbar-dropdown
-                a(href='/activity').navbar-item Афиша мероприятий
-                a(href='/excursion').navbar-item Афиша экскурсий
-                a(href='/service').navbar-item Платные услуги
-            a(href='/culturalInstitution').navbar-item Культурные объекты
-            a(href='/news').navbar-item Новости
-            a(href="/contacts").navbar-item Контакты
-    main
-      .container
-        block content
+          .header__menu.navbar
+            .navbar-menu
+              a(href='/').navbar-item Главная
+              a(href='/about').navbar-item О нас
+              a(href='/department').navbar-item Отделения центра
+              .navbar-item.has-dropdown.is-hoverable
+                a.navbar-link Услуги
+                .navbar-dropdown
+                  a(href='/activity').navbar-item Афиша мероприятий
+                  a(href='/excursion').navbar-item Афиша экскурсий
+                  a(href='/service').navbar-item Платные услуги
+              a(href='/culturalInstitution').navbar-item Культурные объекты
+              a(href='/news').navbar-item Новости
+              a(href='/districtCulture').navbar-item Культура округа
+              a(href="/contacts").navbar-item Контакты
+      main
+        .container
+          block content
 
     footer.footer
       .columns

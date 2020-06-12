@@ -21,7 +21,7 @@ exports.detail = async function (req, res) {
                     {
                         model: models[mNames.news],
                         order: [['id', 'DESC']],
-                        limit: 4,
+                        limit: 3,
                     },
                     {
                         model: models[mNames.activity],

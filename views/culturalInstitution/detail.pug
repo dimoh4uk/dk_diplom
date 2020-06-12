@@ -17,26 +17,27 @@ block content
             h1= culturalInstitution.name
             p= culturalInstitution.description
         .box.page-content__box
-            .title.is-4 Отделения:
-            table.table
-              each department in departments
-                tr
-                  td(style="width: 50%;")= department.name
-                  td= department.address
-                  td
-                    a(href=department.detailLink).button.is-primary.is-fullwidth подробнее
+          .title.is-4 Отделения:
+          table.table
+            each department in departments
+              tr
+                td(style="width: 50%;")= department.name
+                td= department.address
+                td
+                  a(href=department.detailLink).button.is-primary.is-fullwidth подробнее
       .column
-        .box.card-director
-          .media
-            .media-left
-              .card-director__icon
-                span.material-icons person
-            .media-content
-              .card-director__text Директор
-              .card-director__name=director.name
-              .contact-item
-                span.material-icons phone
-                span= director.tel
+        if director
+          .box.card-director
+            .media
+              .media-left
+                .card-director__icon
+                  span.material-icons person
+              .media-content
+                .card-director__text Директор
+                .card-director__name=director.name
+                .contact-item
+                  span.material-icons phone
+                  span= director.tel
         .box
           .title.is-5 Контакты культурного центра
           .contact-item

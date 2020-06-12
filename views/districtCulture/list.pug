@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+
+  .box
+    h2 культурные объекты
+    ul
+      each object in objects
+        li
+        .columns
+          .column.is-8
+            .photo
+              img(src=object.photoLink)
+          .column.is-4
+            .name= object.name
+            .address= object.address
+            a.button(href=tour.detailLink) Подробнее
+
+  .box
+    h2 Туристические объекты
+    ul
+      each tour in tours
+        li
+        .columns
+          .column.is-8
+            .photo
+              img(src=tour.photoLink)
+          .column.is-4
+            .name name: #{tour.name}
+            .address Адресс: #{tour.address}
+            a.button(href=tour.detailLink) Подробнее
+

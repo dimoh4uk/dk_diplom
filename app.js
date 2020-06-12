@@ -13,6 +13,7 @@ const activityRouter = require('./routes/activity');
 const photosRouter = require('./routes/photos');
 const filesRouter = require('./routes/files');
 const aboutRouter = require('./routes/about');
+const districtCulture = require('./routes/districtCulture');
 const departmentRouter = require('./routes/department');
 const excursionRouter = require('./routes/excursion');
 const contactRouter = require('./routes/contacts');
@@ -58,6 +59,7 @@ app.use(`/${modelName.excursion}`, excursionRouter);
 app.use(`/${modelName.service}`, serviceRouter);
 app.use(`/${modelName.culturalInstitution}`, culturalInstitutionRouter);
 app.use(`/about`, aboutRouter);
+app.use(`/districtCulture`, districtCulture);
 app.use(`/contacts`, contactRouter);
 app.use(`/search`, searchRouter);
 

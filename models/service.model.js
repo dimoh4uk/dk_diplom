@@ -1,6 +1,5 @@
 const names = require('../core/models-names');
 const keys = require('../core/foreign-keys');
-const helpers = require('../core/helpers');
 
 module.exports = (sequelize, DataTypes) => {
     const ServiceModel = sequelize.define(names.service, {
@@ -23,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
             }
         }
     }, {
-        updatedAt: false
+        updatedAt: false,
+        createdAt: false,
     });
 
     const serviceIdConfig = {
