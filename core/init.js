@@ -10,7 +10,6 @@ module.exports.initBaseRole = async () => {
     await createStatuses();
     await userRoles();
     await tourObject();
-    await culturalObject();
     await Promise.all(
         await createCulturalCentres()
             .map(async (c) => {
@@ -30,16 +29,6 @@ function tourObject() {
         picture: 'card_1.png',
     }
     return models[names.tourObject].bulkCreate(Array(5).fill(c));
-}
-
-function culturalObject() {
-    const c = {
-        name: 'culturalObject',
-        description: 'culturalObject culturalObject culturalObject culturalObjectculturalObject',
-        address: 'фывфцувцв фывфы фыв ',
-        picture: 'card_1.png',
-    }
-    return models[names.culturalObject].bulkCreate(Array(5).fill(c));
 }
 
 function userRoles() {

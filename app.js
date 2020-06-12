@@ -6,6 +6,7 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 
 const modelName = require('./core/models-names');
+const {mainMenu} = require('./core/consts');
 
 const indexRouter = require('./routes/index');
 const newsRouter = require('./routes/news');
@@ -13,18 +14,18 @@ const activityRouter = require('./routes/activity');
 const photosRouter = require('./routes/photos');
 const filesRouter = require('./routes/files');
 const aboutRouter = require('./routes/about');
-const districtCulture = require('./routes/districtCulture');
 const departmentRouter = require('./routes/department');
 const excursionRouter = require('./routes/excursion');
 const contactRouter = require('./routes/contacts');
 const searchRouter = require('./routes/search');
 const serviceRouter = require('./routes/service');
 const culturalInstitutionRouter = require('./routes/culturalInstitution');
-
+const tourObjectsRouter = require('./routes/tourObjects');
 
 const app = express();
 
 app.locals.title = "Кольтурно-методический центр";
+app.locals.siteMenu = mainMenu;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -58,8 +59,8 @@ app.use(`/${modelName.department}`, departmentRouter);
 app.use(`/${modelName.excursion}`, excursionRouter);
 app.use(`/${modelName.service}`, serviceRouter);
 app.use(`/${modelName.culturalInstitution}`, culturalInstitutionRouter);
+app.use(`/${modelName.tourObject}`, tourObjectsRouter);
 app.use(`/about`, aboutRouter);
-app.use(`/districtCulture`, districtCulture);
 app.use(`/contacts`, contactRouter);
 app.use(`/search`, searchRouter);
 

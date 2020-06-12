@@ -25,7 +25,7 @@ html
               a(href="#").header__phone
                 span.icon
                   span.material-icons call
-                span 1-255-4464645
+                span 2-10-98
               .header__search
                 .dropdown.is-right
                   .dropdown-trigger
@@ -36,19 +36,15 @@ html
 
           .header__menu.navbar
             .navbar-menu
-              a(href='/').navbar-item Главная
-              a(href='/about').navbar-item О нас
-              a(href='/department').navbar-item Отделения центра
-              .navbar-item.has-dropdown.is-hoverable
-                a.navbar-link Услуги
-                .navbar-dropdown
-                  a(href='/activity').navbar-item Афиша мероприятий
-                  a(href='/excursion').navbar-item Афиша экскурсий
-                  a(href='/service').navbar-item Платные услуги
-              a(href='/culturalInstitution').navbar-item Культурные объекты
-              a(href='/news').navbar-item Новости
-              a(href='/districtCulture').navbar-item Культура округа
-              a(href="/contacts").navbar-item Контакты
+              each item in siteMenu
+                if item.menu
+                  .navbar-item.has-dropdown.is-hoverable
+                    a.navbar-link=item.title
+                    .navbar-dropdown
+                      each subItem in item.menu
+                        a(href=subItem.href).navbar-item=subItem.title
+                else
+                  a(href=item.href).navbar-item=item.title
       main
         .container
           block content
@@ -80,5 +76,17 @@ html
               li ПН-ПТ: 9.00 – 18.00
               li Перерыв на обед 13.00 – 14.00
               li СБ , ВС:  в зависимости от мероприятий
-
+          .footer__item
+            .title.is-5.has-text-white
+              span Карта сайта
+            ul.footer__menu
+              each item in siteMenu
+                li
+                  if item.menu
+                    ul
+                      each subItem in item.menu
+                        li
+                          a(href=subItem.href)=subItem.title
+                  else
+                    a(href=item.href)=item.title
     script(src="/javascripts/app.js")

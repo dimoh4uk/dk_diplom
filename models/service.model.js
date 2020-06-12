@@ -22,8 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         }
     }, {
-        updatedAt: false,
-        createdAt: false,
+        timestamps: false,
     });
 
     const serviceIdConfig = {

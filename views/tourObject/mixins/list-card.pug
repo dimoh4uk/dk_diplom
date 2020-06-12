@@ -1,0 +1,19 @@
+mixin listCard(model)
+  .full-card
+    .columns.is-gapless
+      .column
+        a(href=model.detailLink).full-card__img.image.is-2by1
+          img(src=model.photoLink width='672' height='340')
+      .column
+        .full-card__content
+          .full-card__wrap
+            a.title.is-5(href=model.detailLink)= model.name
+            .content=model.description
+          .full-card__contact
+            span.material-icons location_on
+            span=model.address
+          .card-more
+            .card-more__dot
+            a(href=model.detailLink).card-more__link
+              | Читать дальше
+              span.material-icons arrow_forward
