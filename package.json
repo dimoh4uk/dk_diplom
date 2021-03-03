@@ -17,7 +17,7 @@
     "morgan": "~1.9.1",
     "node-sass-middleware": "0.11.0",
     "nodemon": "^2.0.4",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "sequelize": "^5.21.10",
     "swiper": "^5.4.1",
     "tedious": "^8.3.0"
